@@ -177,13 +177,13 @@ html:has(.bas-modal[open]){overflow:hidden}
 .gal .g-wide{grid-column:span 2;grid-row:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;display:block}
 .gal [hidden]{display:none}
-.gal a{display:block;height:100%;color:inherit;text-decoration:none}
-.gal a img{transition:transform .35s ease}
-.gal a:hover img,.gal a:focus-visible img{transform:scale(1.05)}
-.gal a:focus-visible{outline:3px solid var(--g);outline-offset:-3px}
+.gal .g-open{display:block;width:100%;height:100%;padding:0;border:0;margin:0;background:none;color:inherit;font:inherit;text-align:left;cursor:zoom-in;position:relative}
+.gal .g-open img{transition:transform .35s ease}
+.gal .g-open:hover img,.gal .g-open:focus-visible img{transform:scale(1.05)}
+.gal .g-open:focus-visible{outline:3px solid var(--g);outline-offset:-3px;border-radius:14px}
 .gal .g-more.in{animation:galIn .45s ease both}
 @keyframes galIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.gal .g-more.in{animation:none}.gal a img{transition:none}}
+@media (prefers-reduced-motion:reduce){.gal .g-more.in{animation:none}.gal .g-open img{transition:none}}
 .gal-more{display:flex;justify-content:center;margin-top:28px}
 .gal-more[hidden],.gal-more [hidden]{display:none}
 .gal-n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:24px;padding:0 8px;border-radius:999px;background:var(--g);color:#1B1B1B;font-size:13px}
@@ -452,6 +452,32 @@ html:has(.cs-modal[open]){overflow:hidden}
 .tip:after{content:"";position:absolute;left:var(--ax,50%);width:10px;height:10px;margin-left:-5px;background:inherit;transform:rotate(45deg);bottom:-4px}
 .tip.below:after{bottom:auto;top:-4px}
 @media (prefers-reduced-motion:reduce){.tip{transition:none;transform:none}}
+/* gallery zoom icon */
+.g-zoom{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:10px;background:rgba(0,0,0,.55);color:#ffffff;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:.85;transform:scale(.92);transition:opacity .2s,transform .2s,background .2s}
+.g-zoom svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.g-open:hover .g-zoom,.g-open:focus-visible .g-zoom{opacity:1;transform:none;background:#97C93B;color:#1B1B1B}
+/* lightbox */
+.lb{border:0;padding:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;background:transparent;color:#ffffff;font-family:Montserrat,Helvetica,Arial,sans-serif;overflow:hidden}
+.lb::backdrop{background:rgba(10,11,12,.93)}
+.lb[open]{display:block;animation:basIn .25s ease}
+html:has(.lb[open]){overflow:hidden}
+.lb-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:72px 96px 40px}
+.lb-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%;max-height:100%}
+.lb-fig img{display:block;max-width:min(1200px,100%);max-height:calc(100dvh - 170px);width:auto;height:auto;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5);background:#1C1D1F;touch-action:pan-y;user-select:none;-webkit-user-drag:none}
+.lb-fig img.swap{animation:lbSwap .3s ease}
+@keyframes lbSwap{from{opacity:.2;transform:scale(.985)}to{opacity:1;transform:none}}
+.lb-fig figcaption{display:flex;align-items:center;gap:14px;font-size:15px;font-weight:600;color:#E6E7E3;text-align:center}
+.lb-count{font-size:13px;font-weight:600;color:#A9AAA6;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.08)}
+.lb-btn{position:absolute;z-index:2;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s,transform .15s}
+.lb-btn svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lb-btn:hover{background:#97C93B;color:#1B1B1B;border-color:#97C93B}
+.lb-btn:focus-visible{outline:3px solid #97C93B;outline-offset:3px}
+.lb-close{top:16px;right:16px;width:46px;height:46px}
+.lb-close:hover{transform:rotate(90deg)}
+.lb-prev{left:24px;top:50%;margin-top:-26px}
+.lb-next{right:24px;top:50%;margin-top:-26px}
+@media (max-width:700px){.lb-stage{padding:64px 12px 96px}.lb-fig img{max-height:calc(100dvh - 210px)}.lb-prev,.lb-next{top:auto;bottom:22px;margin:0}.lb-prev{left:calc(50% - 64px)}.lb-next{right:calc(50% - 64px)}.lb-fig figcaption{flex-direction:column;gap:8px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){.lb[open],.lb-fig img.swap{animation:none}.lb-close:hover{transform:none}}
 </style>
 <script>if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx');</script>
 </head>
@@ -755,31 +781,31 @@ html:has(.cs-modal[open]){overflow:hidden}
    <h2 class="h2" id="gal-h">Commercial lighting upgrades in action</h2>
   </div>
   <div class="gal" id="gal">
-   <figure class="g-wide"><img src="assets/after-hd.webp" alt="Shopping centre car park at night lit by enLighten LED fittings"><figcaption>Shopping centre car park upgrade</figcaption></figure>
-   <figure><img src="assets/gallery-carpark.webp" alt="Basement car park of a Sydney CBD office tower lit with enLighten LED fittings"><figcaption>Office tower basement car park</figcaption></figure>
-   <figure><img src="assets/gallery-tower.webp" alt="Sydney CBD A-grade commercial office tower that received an enLighten lighting retrofit"><figcaption>Sydney CBD A-grade office tower</figcaption></figure>
-   <figure><img src="assets/gallery-foyer.webp" alt="Office tower lift foyer lit by enLighten Chamaeleon LED fittings"><figcaption>Chamaeleon in a lift foyer</figcaption></figure>
-   <figure><img src="assets/gallery-office-foyer.webp" alt="Atrium foyer of 477 Pitt Street, Sydney, an office tower upgraded by enLighten"><figcaption>477 Pitt St office foyer, Sydney</figcaption></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/dee-why-rsl"><img src="assets/projects/dee-why-rsl.jpg" alt="Dee Why RSL car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Dee Why RSL car park</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/australia-post"><img src="assets/projects/australia-post.jpg" alt="Australia Post high bay upgrade, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Australia Post high bay upgrade</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/transforming-telstra-s-lighting-infrastructure-for-a-sustainable-future"><img src="assets/projects/telstra.jpg" alt="Telstra lighting infrastructure, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Telstra lighting infrastructure</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/caroline-springs-lake-reserve"><img src="assets/projects/caroline-springs.jpg" alt="Caroline Springs Lake Reserve, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Caroline Springs Lake Reserve</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/macquarie-park"><img src="assets/projects/macquarie-park.jpg" alt="Macquarie Park LED retrofit, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Macquarie Park LED retrofit</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/eureka-tower"><img src="assets/projects/eureka-tower.jpg" alt="Eureka Tower, Melbourne, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Eureka Tower, Melbourne</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/mosman-council-car-park"><img src="assets/projects/mosman-council.jpg" alt="Mosman Council car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Mosman Council car park</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/gastronomy-group"><img src="assets/projects/gastronomy-group.jpg" alt="Gastronomy Group commercial kitchen, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Gastronomy Group commercial kitchen</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/mango-hill-market-place"><img src="assets/projects/mango-hill.jpg" alt="Mango Hill Market Place, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Mango Hill Market Place</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/22-edgeworth-david-ave-hornsby"><img src="assets/projects/hornsby.jpg" alt="Office car park, Hornsby, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Office car park, Hornsby</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/abode-apartments"><img src="assets/projects/abode-apartments.jpg" alt="Abode Apartments fire stairs &amp; car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Abode Apartments fire stairs &amp; car park</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/food-manufacturing-facility"><img src="assets/projects/food-manufacturing.jpg" alt="Food manufacturing high bays, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Food manufacturing high bays</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/castlebar-cove-apartments"><img src="assets/projects/castlebar-cove.jpg" alt="Castlebar Cove apartment lobby, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Castlebar Cove apartment lobby</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/hyde-park-towers"><img src="assets/projects/hyde-park-towers.jpg" alt="Hyde Park Towers fire stairs, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Hyde Park Towers fire stairs</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/nab-house-sydney"><img src="assets/projects/nab-house.jpg" alt="NAB House foyer, Sydney, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>NAB House foyer, Sydney</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/st-vincent-de-paul-society"><img src="assets/projects/st-vincent-de-paul.jpg" alt="St Vincent de Paul warehouse, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>St Vincent de Paul warehouse</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/surfers-paradise-marriott-resort"><img src="assets/projects/marriott.jpg" alt="Surfers Paradise Marriott car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Surfers Paradise Marriott car park</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/trend-windows-doors"><img src="assets/projects/trend-windows.jpg" alt="Trend Windows &amp; Doors workshop, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Trend Windows &amp; Doors workshop</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/university-of-technology-sydney-city-campus"><img src="assets/projects/uts.jpg" alt="UTS City Campus, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>UTS City Campus</figcaption></a></figure>
-   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/haighs-chocolates"><img src="assets/projects/haighs.jpg" alt="Haigh’s Chocolates warehouse, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Haigh’s Chocolates warehouse</figcaption></a></figure>
+   <figure class="g-wide"><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/after-hd.webp" alt="Shopping centre car park at night lit by enLighten LED fittings"><figcaption>Shopping centre car park upgrade</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/gallery-carpark.webp" alt="Basement car park of a Sydney CBD office tower lit with enLighten LED fittings"><figcaption>Office tower basement car park</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/gallery-tower.webp" alt="Sydney CBD A-grade commercial office tower that received an enLighten lighting retrofit"><figcaption>Sydney CBD A-grade office tower</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/gallery-foyer.webp" alt="Office tower lift foyer lit by enLighten Chamaeleon LED fittings"><figcaption>Chamaeleon in a lift foyer</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/gallery-office-foyer.webp" alt="Atrium foyer of 477 Pitt Street, Sydney, an office tower upgraded by enLighten"><figcaption>477 Pitt St office foyer, Sydney</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/dee-why-rsl.jpg" alt="Dee Why RSL car park" loading="lazy" decoding="async"><figcaption>Dee Why RSL car park</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/australia-post.jpg" alt="Australia Post high bay upgrade" loading="lazy" decoding="async"><figcaption>Australia Post high bay upgrade</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/telstra.jpg" alt="Telstra lighting infrastructure" loading="lazy" decoding="async"><figcaption>Telstra lighting infrastructure</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/caroline-springs.jpg" alt="Caroline Springs Lake Reserve" loading="lazy" decoding="async"><figcaption>Caroline Springs Lake Reserve</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/macquarie-park.jpg" alt="Macquarie Park LED retrofit" loading="lazy" decoding="async"><figcaption>Macquarie Park LED retrofit</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/eureka-tower.jpg" alt="Eureka Tower, Melbourne" loading="lazy" decoding="async"><figcaption>Eureka Tower, Melbourne</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/mosman-council.jpg" alt="Mosman Council car park" loading="lazy" decoding="async"><figcaption>Mosman Council car park</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/gastronomy-group.jpg" alt="Gastronomy Group commercial kitchen" loading="lazy" decoding="async"><figcaption>Gastronomy Group commercial kitchen</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/mango-hill.jpg" alt="Mango Hill Market Place" loading="lazy" decoding="async"><figcaption>Mango Hill Market Place</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/hornsby.jpg" alt="Office car park, Hornsby" loading="lazy" decoding="async"><figcaption>Office car park, Hornsby</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/abode-apartments.jpg" alt="Abode Apartments fire stairs &amp; car park" loading="lazy" decoding="async"><figcaption>Abode Apartments fire stairs &amp; car park</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/food-manufacturing.jpg" alt="Food manufacturing high bays" loading="lazy" decoding="async"><figcaption>Food manufacturing high bays</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/castlebar-cove.jpg" alt="Castlebar Cove apartment lobby" loading="lazy" decoding="async"><figcaption>Castlebar Cove apartment lobby</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/hyde-park-towers.jpg" alt="Hyde Park Towers fire stairs" loading="lazy" decoding="async"><figcaption>Hyde Park Towers fire stairs</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/nab-house.jpg" alt="NAB House foyer, Sydney" loading="lazy" decoding="async"><figcaption>NAB House foyer, Sydney</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/st-vincent-de-paul.jpg" alt="St Vincent de Paul warehouse" loading="lazy" decoding="async"><figcaption>St Vincent de Paul warehouse</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/marriott.jpg" alt="Surfers Paradise Marriott car park" loading="lazy" decoding="async"><figcaption>Surfers Paradise Marriott car park</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/trend-windows.jpg" alt="Trend Windows &amp; Doors workshop" loading="lazy" decoding="async"><figcaption>Trend Windows &amp; Doors workshop</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/uts.jpg" alt="UTS City Campus" loading="lazy" decoding="async"><figcaption>UTS City Campus</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
+   <figure class="g-more" hidden><button class="g-open" type="button" data-tip="Enlarge image"><img src="assets/projects/haighs.jpg" alt="Haigh’s Chocolates warehouse" loading="lazy" decoding="async"><figcaption>Haigh’s Chocolates warehouse</figcaption><span class="g-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></span></button></figure>
   </div>
   <div class="gal-more"><button data-tip="Show 20 more completed lighting projects" class="btn btn-ghost" type="button" id="gal-btn" aria-controls="gal">Load more projects <span class="gal-n">+20</span></button></div>
  </div>
@@ -1091,6 +1117,17 @@ html:has(.cs-modal[open]){overflow:hidden}
   </div>
  </article>
 </dialog>
+<dialog class="lb" id="lb" aria-label="Project gallery" style="--g: #97C93B">
+ <div class="lb-stage" id="lb-stage">
+  <figure class="lb-fig">
+   <img id="lb-img" alt="">
+   <figcaption><span id="lb-cap"></span><span class="lb-count" id="lb-count"></span></figcaption>
+  </figure>
+ </div>
+ <button class="lb-btn lb-close" type="button" id="lb-close" data-tip="Close (Esc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg><span class="sr">Close</span></button>
+ <button class="lb-btn lb-prev" type="button" id="lb-prev" data-tip="Previous image (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg><span class="sr">Previous image</span></button>
+ <button class="lb-btn lb-next" type="button" id="lb-next" data-tip="Next image (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg><span class="sr">Next image</span></button>
+</dialog>
 <div class="tip" id="tip" role="tooltip" hidden></div>
 <button data-tip="Back to the top of the page" class="totop" id="totop" type="button" aria-label="Back to top" tabindex="-1">
  <svg class="totop-ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" class="trk"></circle><circle cx="26" cy="26" r="23" class="val" id="totop-val"></circle></svg>
@@ -1158,7 +1195,7 @@ html:has(.cs-modal[open]){overflow:hidden}
   var gb=document.getElementById('gal-btn');
   gb.addEventListener('click',function(){var m=[].slice.call(document.querySelectorAll('#gal .g-more'));
     m.forEach(function(x,i){x.hidden=false;x.style.animationDelay=(i%4)*60+'ms';x.classList.add('in');});
-    gb.parentNode.hidden=true;if(m[0])m[0].querySelector('a').focus({preventScroll:true});});
+    gb.parentNode.hidden=true;if(m[0])m[0].querySelector('.g-open').focus({preventScroll:true});});
   var dock=document.getElementById('dock'),dl=[].slice.call(dock.querySelectorAll('.dock-links a'));
   var dlw=dock.querySelector('.dock-links'),dockTouch=false,dockTT=null;
   function dockHold(){dockTouch=true;clearTimeout(dockTT);dockTT=setTimeout(function(){dockTouch=false;},1800);}
@@ -1203,6 +1240,23 @@ html:has(.cs-modal[open]){overflow:hidden}
   document.addEventListener('focusout',tipHide);document.addEventListener('pointerdown',tipHide);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&tipFor){tipHide();}});
   addEventListener('scroll',tipHide,{passive:true,capture:true});
+  var lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbCap=document.getElementById('lb-cap'),lbCount=document.getElementById('lb-count'),lbList=[],lbI=0,lbFrom=null;
+  function lbItems(){return [].slice.call(document.querySelectorAll('#gal figure')).filter(function(f){return !f.hidden;});}
+  function lbShow(i){var n=lbList.length;lbI=(i+n)%n;var fg=lbList[lbI],im=fg.querySelector('img');
+    lbImg.classList.remove('swap');void lbImg.offsetWidth;lbImg.src=im.currentSrc||im.src;lbImg.alt=im.alt;lbImg.classList.add('swap');
+    lbCap.textContent=fg.querySelector('figcaption').textContent;lbCount.textContent=(lbI+1)+' / '+n;
+    [lbI+1,lbI-1].forEach(function(j){var p=lbList[(j+n)%n].querySelector('img');var pre=new Image();pre.src=p.currentSrc||p.src;});}
+  function lbOpen(fg){lbList=lbItems();lbFrom=fg.querySelector('.g-open');lb.showModal();lbShow(lbList.indexOf(fg));document.getElementById('lb-next').focus();}
+  document.getElementById('gal').addEventListener('click',function(e){var b=e.target.closest('.g-open');if(b)lbOpen(b.closest('figure'));});
+  document.getElementById('lb-prev').addEventListener('click',function(){lbShow(lbI-1);});
+  document.getElementById('lb-next').addEventListener('click',function(){lbShow(lbI+1);});
+  document.getElementById('lb-close').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target.id==='lb-stage'||e.target.classList.contains('lb-fig'))lb.close();});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();lbShow(lbI-1);}else if(e.key==='ArrowRight'){e.preventDefault();lbShow(lbI+1);}});
+  lb.addEventListener('close',function(){if(lbFrom)lbFrom.focus({preventScroll:true});});
+  var lbX=null,lbY=null;
+  lbImg.addEventListener('touchstart',function(e){lbX=e.touches[0].clientX;lbY=e.touches[0].clientY;},{passive:true});
+  lbImg.addEventListener('touchend',function(e){if(lbX===null)return;var dx=e.changedTouches[0].clientX-lbX,dy=e.changedTouches[0].clientY-lbY;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))lbShow(lbI+(dx<0?1:-1));lbX=null;},{passive:true});
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
