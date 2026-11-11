@@ -47,6 +47,26 @@ body{margin:0}
 /* hero */
 .hero{position:relative;background:#141414;color:#ffffff;overflow:hidden}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%}
+.hero-slides{position:absolute;inset:0;overflow:hidden}
+.hero-slide{opacity:0;transform:scale(1.08);transition:opacity 1.6s ease,transform 7.5s ease-out;will-change:opacity,transform}
+.hero-slide.on{opacity:1;transform:scale(1)}
+.hs-ctl{position:absolute;right:24px;bottom:20px;z-index:3;display:flex;align-items:center;gap:12px;padding:6px 6px 6px 14px;border-radius:999px;background:rgba(0,0,0,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hs-cap{font-size:12px;font-weight:600;color:#E6E7E3;white-space:nowrap;transition:opacity .4s}
+.hs-cap.fade{opacity:0}
+.hs-dots{display:flex;gap:2px}
+.hs-dot{position:relative;width:22px;height:28px;border:0;padding:0;background:none;cursor:pointer}
+.hs-dot:before{content:"";position:absolute;left:3px;right:3px;top:12px;height:4px;border-radius:4px;background:rgba(255,255,255,.35);transition:background .2s}
+.hs-dot.on:before{background:var(--g)}
+.hs-dot:hover:before{background:#ffffff}
+.hs-dot:focus-visible,.hs-pause:focus-visible{outline:2px solid var(--g);outline-offset:1px;border-radius:6px}
+.hs-pause{width:30px;height:30px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.hs-pause:hover{background:var(--g);color:#1B1B1B}
+.hs-pause svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.hs-pause .pl{display:none;fill:currentColor;stroke:none}
+.hs-pause[aria-pressed="true"] .p{display:none}
+.hs-pause[aria-pressed="true"] .pl{display:block}
+@media (max-width:1080px){.hs-cap{display:none}.hs-ctl{left:50%;right:auto;transform:translateX(-50%);bottom:14px;padding-left:8px}}
+@media (prefers-reduced-motion:reduce){.hero-slide{transform:none;transition:opacity .8s ease}}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,12,.9) 0%,rgba(12,12,12,.84) 46%,rgba(12,12,12,.5) 55%,rgba(12,12,12,0) 66%),linear-gradient(0deg,rgba(12,12,12,.55) 0%,rgba(12,12,12,0) 30%)}
 @media (max-width:1080px){.hero-shade{background:linear-gradient(180deg,rgba(12,12,12,.78),rgba(12,12,12,.88))}}
 .hero-grid{position:relative;display:grid;grid-template-columns:55fr 45fr;grid-template-areas:"copy form" "bens form";grid-template-rows:auto 1fr;column-gap:56px;padding-top:72px;padding-bottom:80px;align-items:start}
@@ -498,7 +518,14 @@ html:has(.lb[open]){overflow:hidden}
 
 <!-- 1. HERO -->
 <section class="hero" aria-labelledby="hero-h1">
- <img class="hero-bg" src="assets/hero.webp" srcset="assets/hero-1200.webp 1200w, assets/hero.webp 2400w" sizes="100vw" alt="" fetchpriority="high">
+ <div class="hero-slides" aria-hidden="true">
+  <img class="hero-bg hero-slide on" src="assets/hero.webp" srcset="assets/hero-1200.webp 1200w, assets/hero.webp 2400w" sizes="100vw" alt="" fetchpriority="high" style="object-position:60% 55%" data-cap="Taylors Hill Village shopping centre car park">
+  <img class="hero-bg hero-slide" data-srcset="assets/hero/mango-hill-1200.webp 1200w, assets/hero/mango-hill.webp 2000w" sizes="100vw" alt="" decoding="async" style="object-position:50% 50%" data-cap="Mango Hill Market Place car park">
+  <img class="hero-bg hero-slide" data-srcset="assets/hero/australia-post-1200.webp 1200w, assets/hero/australia-post.webp 2000w" sizes="100vw" alt="" decoding="async" style="object-position:50% 50%" data-cap="Australia Post high bay upgrade">
+  <img class="hero-bg hero-slide" data-srcset="assets/hero/mosman-1200.webp 1200w, assets/hero/mosman.webp 2000w" sizes="100vw" alt="" decoding="async" style="object-position:50% 50%" data-cap="Mosman Council car park">
+  <img class="hero-bg hero-slide" data-srcset="assets/hero/telstra-1200.webp 1200w, assets/hero/telstra.webp 2000w" sizes="100vw" alt="" decoding="async" style="object-position:50% 40%" data-cap="Telstra lighting infrastructure">
+  <img class="hero-bg hero-slide" data-srcset="assets/hero/trend-windows-1200.webp 1200w, assets/hero/trend-windows.webp 2000w" sizes="100vw" alt="" decoding="async" style="object-position:60% 50%" data-cap="Trend Windows & Doors workshop">
+ </div>
  <div class="hero-shade"></div>
  <div class="wrap hero-grid">
   <div class="hero-copy">
@@ -579,6 +606,11 @@ html:has(.lb[open]){overflow:hidden}
     
    </div>
   </div>
+ </div>
+ <div class="hs-ctl" role="group" aria-label="Background images">
+  <span class="hs-cap" id="hs-cap" aria-live="off">Taylors Hill Village shopping centre car park</span>
+  <div class="hs-dots"><button type="button" class="hs-dot on" data-i="0" data-tip="Taylors Hill Village shopping centre car park" aria-label="Show image 1: Taylors Hill Village shopping centre car park" aria-current="true"></button><button type="button" class="hs-dot" data-i="1" data-tip="Mango Hill Market Place car park" aria-label="Show image 2: Mango Hill Market Place car park"></button><button type="button" class="hs-dot" data-i="2" data-tip="Australia Post high bay upgrade" aria-label="Show image 3: Australia Post high bay upgrade"></button><button type="button" class="hs-dot" data-i="3" data-tip="Mosman Council car park" aria-label="Show image 4: Mosman Council car park"></button><button type="button" class="hs-dot" data-i="4" data-tip="Telstra lighting infrastructure" aria-label="Show image 5: Telstra lighting infrastructure"></button><button type="button" class="hs-dot" data-i="5" data-tip="Trend Windows &amp; Doors workshop" aria-label="Show image 6: Trend Windows &amp; Doors workshop"></button></div>
+  <button type="button" class="hs-pause" id="hs-pause" aria-pressed="false" data-tip="Pause the rotating images"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="p" d="M9 6v12M15 6v12"></path><path class="pl" d="M8 5l11 7-11 7z"></path></svg><span class="sr">Pause background images</span></button>
  </div>
 </section>
 
@@ -1257,6 +1289,19 @@ html:has(.lb[open]){overflow:hidden}
   var lbX=null,lbY=null;
   lbImg.addEventListener('touchstart',function(e){lbX=e.touches[0].clientX;lbY=e.touches[0].clientY;},{passive:true});
   lbImg.addEventListener('touchend',function(e){if(lbX===null)return;var dx=e.changedTouches[0].clientX-lbX,dy=e.changedTouches[0].clientY-lbY;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))lbShow(lbI+(dx<0?1:-1));lbX=null;},{passive:true});
+  (function(){var sl=[].slice.call(document.querySelectorAll('.hero-slide')),dt=[].slice.call(document.querySelectorAll('.hs-dot')),cap=document.getElementById('hs-cap'),pb=document.getElementById('hs-pause'),cur=0,tm=null,
+    rm=matchMedia('(prefers-reduced-motion: reduce)').matches,paused=rm;
+    function load(i){var im=sl[i];if(im&&im.dataset.srcset){im.srcset=im.dataset.srcset;im.removeAttribute('data-srcset');}}
+    function go(i){i=(i+sl.length)%sl.length;if(i===cur)return;load(i);var im=sl[i];
+      function show(){sl[cur].classList.remove('on');dt[cur].classList.remove('on');dt[cur].removeAttribute('aria-current');cur=i;im.classList.add('on');dt[i].classList.add('on');dt[i].setAttribute('aria-current','true');
+        cap.classList.add('fade');setTimeout(function(){cap.textContent=im.dataset.cap;cap.classList.remove('fade');},400);load(i+1<sl.length?i+1:0);}
+      if(im.complete&&im.naturalWidth)show();else im.addEventListener('load',show,{once:true});}
+    function tick(){clearTimeout(tm);if(!paused&&!document.hidden)tm=setTimeout(function(){go(cur+1);tick();},6000);}
+    dt.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);tick();});});
+    pb.addEventListener('click',function(){paused=!paused;pb.setAttribute('aria-pressed',paused?'true':'false');pb.setAttribute('data-tip',paused?'Play the rotating images':'Pause the rotating images');pb.querySelector('.sr').textContent=paused?'Play background images':'Pause background images';tick();});
+    if(rm){pb.setAttribute('aria-pressed','true');pb.setAttribute('data-tip','Play the rotating images');}
+    document.addEventListener('visibilitychange',tick);
+    addEventListener('load',function(){load(1);});tick();})();
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
