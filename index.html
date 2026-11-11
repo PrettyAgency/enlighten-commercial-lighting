@@ -196,6 +196,32 @@ html:has(.bas-modal[open]){overflow:hidden}
 .calc h3{margin:0 0 4px;font-size:22px;color:#231F20}
 .cgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;margin-top:20px}
 .res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:8px 0 20px}
+.rx{position:relative;overflow:hidden;isolation:isolate;margin:8px 0 18px;padding:22px;border-radius:18px;background:linear-gradient(150deg,#1F2420 0%,#17181A 75%);color:#ffffff}
+.rx:before{content:"";position:absolute;z-index:-1;right:-80px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(151,201,59,.32),rgba(151,201,59,0) 70%)}
+.rx-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rx-lab{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g)}
+.rx-big{display:block;margin:4px 0 2px;font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.02em;color:#ffffff;font-variant-numeric:tabular-nums}
+.rx-sub{font-size:14px;color:#C9CAC6}
+.rx-sub b{color:#ffffff;font-variant-numeric:tabular-nums}
+.rx-gauge{position:relative;width:118px;height:118px;flex:none}
+.rx-gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.rx-gauge circle{fill:none;stroke-width:10}
+.rx-gauge .trk{stroke:rgba(255,255,255,.1)}
+.rx-gauge .val{stroke:var(--g);stroke-linecap:round;stroke-dasharray:314.2;stroke-dashoffset:314.2;transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 6px rgba(151,201,59,.55))}
+.rx-gauge div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.rx-gauge b{font-size:26px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.rx-gauge span{margin-top:3px;font-size:10px;line-height:1.2;color:#C9CAC6;max-width:70px}
+.rx-cmp{margin-top:18px;display:grid;gap:10px}
+.rx-row{display:grid;grid-template-columns:110px 1fr 92px;align-items:center;gap:10px;font-size:12px;color:#C9CAC6}
+.rx-row em{font-style:normal;text-align:right;color:#ffffff;font-variant-numeric:tabular-nums}
+.rx-track{height:10px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.rx-track i{display:block;height:100%;width:0;border-radius:6px;background:rgba(255,255,255,.4);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.rx-led .rx-track i{background:var(--g);box-shadow:0 0 10px rgba(151,201,59,.6)}
+.rx-5y{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:10px;align-items:center;font-size:14px;color:#E6E7E3}
+.rx-5y svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--g);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rx-5y b{color:var(--g)}
+@media (max-width:640px){.rx{padding:18px}.rx-top{flex-direction:column;align-items:flex-start}.rx-big{font-size:36px}.rx-gauge{position:absolute;right:16px;top:16px;width:84px;height:84px}.rx-gauge b{font-size:18px}.rx-gauge span{display:none}.rx-row{grid-template-columns:1fr auto;row-gap:6px}.rx-track{grid-column:1/-1;grid-row:2}}
+@media (prefers-reduced-motion:reduce){.rx-gauge .val,.rx-track i{transition:none}}
 .res div{background:#F5F6F3;border-radius:12px;padding:16px}
 .res b{display:block;font-size:24px;color:#231F20;font-weight:800;line-height:1.2}
 .res span{font-size:13px;color:#4A4A4A}
@@ -339,9 +365,29 @@ html:has(.bas-modal[open]){overflow:hidden}
 .faq-count{margin:14px 0 0;font-size:13px;color:#555555}
 .faq-empty{padding:28px 0;color:#444444}
 .faq-empty a{color:#3F6B0A;font-weight:700}
-.faq-side{position:sticky;top:24px;background:#231F20;color:#ffffff;border-radius:20px;padding:32px}
-.faq-side h3{margin:0 0 8px;font-size:22px}
-.faq-side p{margin:0 0 20px;color:#D2D2D2;font-size:15px}
+.faq-side{position:sticky;top:24px;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,#20251F 0%,#17181A 70%);color:#ffffff;border-radius:22px;padding:30px;box-shadow:0 24px 50px -28px rgba(0,0,0,.6)}
+.faq-side:before{content:"";position:absolute;z-index:-1;right:-90px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(151,201,59,.3),rgba(151,201,59,0) 70%)}
+.faq-side h3{margin:16px 0 6px;font-size:22px}
+.faq-side>p{margin:0 0 18px;color:#D2D2D2;font-size:15px}
+.fs-ic{position:relative;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#97C93B;color:#1B1B1B}
+.fs-ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fs-ic i{position:absolute;inset:0;border-radius:50%;border:2px solid #97C93B;animation:iafPing 2.6s ease-out infinite}
+.fs-ic i+i{animation-delay:1.3s}
+.fs-call{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#ffffff !important;text-decoration:none;transition:background .2s,border-color .2s}
+.fs-call:hover{background:rgba(151,201,59,.14);border-color:rgba(151,201,59,.6)}
+.fs-call:focus-visible{outline:3px solid #97C93B;outline-offset:2px}
+.fs-call-ic{width:44px;height:44px;flex:none;border-radius:12px;background:#97C93B;color:#1B1B1B;display:flex;align-items:center;justify-content:center;transition:transform .25s}
+.fs-call:hover .fs-call-ic{transform:rotate(-12deg) scale(1.05)}
+.fs-call-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fs-call small{display:block;font-size:12px;color:#A9AAA6;font-weight:500}
+.fs-call span:last-child{font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.fs-topics{margin:18px 0 18px}
+.fs-topics>span{display:block;font-size:12px;font-weight:600;color:#A9AAA6;margin-bottom:8px}
+.fs-topics div{display:flex;flex-wrap:wrap;gap:6px}
+.fs-chip{font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#ffffff;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.fs-chip:hover{background:#97C93B;border-color:#97C93B;color:#1B1B1B}
+.fs-chip:focus-visible{outline:3px solid #97C93B;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.fs-ic i{animation:none;opacity:0}.fs-call-ic{transition:none}}
 /* final cta */
 .final{background:#17181A;color:#ffffff;border-radius:28px;padding:64px 56px;display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
 .final-bg{position:absolute;inset:0;z-index:-2;background:linear-gradient(100deg,#17181A 30%,rgba(23,24,26,.82) 58%,rgba(23,24,26,.55)),url(assets/hero.webp) center 60%/cover no-repeat}
@@ -795,10 +841,23 @@ html:has(.lb[open]){overflow:hidden}
     <div class="fld"><label for="c-l">LED watts per fitting</label><input id="c-l" class="inp" type="number" min="1" value="18"></div>
     <div class="fld"><label for="c-t">Electricity price ($ per kWh)</label><input id="c-t" class="inp" type="number" min="0" step="0.01" value="0.3"></div>
    </div>
-   <div class="res" aria-live="polite">
-    <div><b id="r-kwh">-</b><span>kWh saved per year</span></div>
-    <div><b id="r-dollars">-</b><span>energy cost saved per year</span></div>
-    <div><b id="r-pct">-</b><span>less lighting energy</span></div>
+   <div class="rx" id="rx">
+    <div class="rx-top">
+     <div class="rx-main" aria-live="polite">
+      <span class="rx-lab">Estimated savings per year</span>
+      <b class="rx-big" id="r-dollars">$0</b>
+      <span class="rx-sub"><b id="r-kwh">0</b> kWh less electricity each year</span>
+     </div>
+     <div class="rx-gauge">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50" class="trk"></circle><circle cx="60" cy="60" r="50" class="val" id="r-ring"></circle></svg>
+      <div><b id="r-pct">0%</b><span>less lighting energy</span></div>
+     </div>
+    </div>
+    <div class="rx-cmp" aria-hidden="true">
+     <div class="rx-row"><span>Existing lighting</span><div class="rx-track"><i id="r-bar-old"></i></div><em id="r-old">0 kWh</em></div>
+     <div class="rx-row rx-led"><span>enLighten LED</span><div class="rx-track"><i id="r-bar-new"></i></div><em id="r-new">0 kWh</em></div>
+    </div>
+    <div class="rx-5y"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg><span>Over the 5-year minimum warranty, that's about <b id="r-5y">$0</b> in energy costs.</span></div>
    </div>
    <p style="margin: 0 0 16px; font-size: 13px; color: #555555">Indicative only: (existing W - LED W) x fittings x hours x 365. It excludes extra savings from sensors, controls and reduced maintenance, which your ROI proposal includes.</p>
    <a data-tip="Go to the free ROI proposal form" class="btn" href="#roi-form" style="width: 100%">Get My Detailed ROI Proposal</a>
@@ -1027,7 +1086,16 @@ html:has(.lb[open]){overflow:hidden}
    <p class="eyebrow">FAQs</p>
    <h2 class="h2" id="faq-h">Commercial LED lighting questions, answered</h2>
    <p class="lead" style="margin-bottom: 28px">Straight answers about costs, savings, sensors, standards and rebates.</p>
-   <div class="faq-side"><h3>Still have a question?</h3><p>Talk to a commercial lighting specialist or request your ROI proposal.</p><a data-tip="Call a commercial lighting specialist on 1800 365 444" class="btn" href="tel:1800365444" style="width: 100%; margin-bottom: 12px">Call 1800 365 444</a><a data-tip="Go to the free ROI proposal form" class="btn btn-ghost-light" href="#roi-form" style="width: 100%">Get Your ROI Proposal</a></div>
+   <div class="faq-side">
+    <span class="fs-ic" aria-hidden="true"><i></i><i></i><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="3" y="14" width="4" height="6" rx="1.5"></rect><rect x="17" y="14" width="4" height="6" rx="1.5"></rect><path d="M19 20a3 3 0 0 1-3 2h-3"></path></svg></span>
+    <h3>Still have a question?</h3>
+    <p>Talk it through with a commercial lighting specialist. No obligation, no pressure.</p>
+    <a data-tip="Call a commercial lighting specialist on 1800 365 444" class="fs-call" href="tel:1800365444"><span class="fs-call-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></span><span><small>Call us</small>1800 365 444</span></a>
+    <div class="fs-topics"><span>Or jump to a popular topic</span>
+     <div><button type="button" class="fs-chip" data-q="payback" data-tip="Show questions about payback">Payback</button><button type="button" class="fs-chip" data-q="rebate" data-tip="Show questions about rebates">Rebates</button><button type="button" class="fs-chip" data-q="sensor" data-tip="Show questions about sensors">Sensors</button><button type="button" class="fs-chip" data-q="standard" data-tip="Show questions about Australian Standards">Standards</button></div>
+    </div>
+    <a data-tip="Go to the free ROI proposal form" class="btn btn-ghost-light" href="#roi-form" style="width: 100%">Get Your ROI Proposal</a>
+   </div>
   </div>
   <div class="faq-col">
   <div class="faq-tools">
@@ -1303,14 +1371,24 @@ html:has(.lb[open]){overflow:hidden}
     /* Prototype only: in Umbraco, let the form post normally and set its redirect to this URL */
     e.preventDefault();window.location.href='https://www.enlighten.com.au/form-processing/confirmation';
   });
+  var rxPrev={};
+  function rxTween(id,to,fmt){var el=document.getElementById(id),from=rxPrev[id]||0;rxPrev[id]=to;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(to);return;}
+    var t0=null;function st(t){if(!t0)t0=t;var p=Math.min((t-t0)/600,1),e=1-Math.pow(1-p,3);el.textContent=fmt(from+(to-from)*e);if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);}
   function calc(){
     function n(i){return +document.getElementById(i).value||0;}
-    var kwh=Math.max(0,(n('c-o')-n('c-l'))*n('c-n')*Math.min(n('c-h'),24)*365/1000);
-    var pct=n('c-o')>0?Math.max(0,Math.round((n('c-o')-n('c-l'))/n('c-o')*100)):0;
+    var hrs=Math.min(n('c-h'),24)*365,oldK=n('c-o')*n('c-n')*hrs/1000,newK=Math.min(n('c-l'),n('c-o'))*n('c-n')*hrs/1000;
+    var kwh=Math.max(0,oldK-newK),pct=oldK>0?Math.max(0,Math.round(kwh/oldK*100)):0,dol=kwh*n('c-t');
     function fmt(x){return Math.round(x).toLocaleString('en-AU');}
-    document.getElementById('r-kwh').textContent=fmt(kwh);
-    document.getElementById('r-dollars').textContent='$'+fmt(kwh*n('c-t'));
-    document.getElementById('r-pct').textContent=pct+'%';
+    rxTween('r-dollars',dol,function(x){return '$'+fmt(x);});
+    rxTween('r-kwh',kwh,fmt);
+    rxTween('r-pct',pct,function(x){return Math.round(x)+'%';});
+    rxTween('r-5y',dol*5,function(x){return '$'+fmt(x);});
+    document.getElementById('r-old').textContent=fmt(oldK)+' kWh';
+    document.getElementById('r-new').textContent=fmt(newK)+' kWh';
+    document.getElementById('r-ring').style.strokeDashoffset=314.2*(1-pct/100);
+    document.getElementById('r-bar-old').style.width=oldK>0?'100%':'0';
+    document.getElementById('r-bar-new').style.width=oldK>0?Math.max(2,newK/oldK*100)+'%':'0';
   }
   ['c-n','c-h','c-o','c-l','c-t'].forEach(function(i){document.getElementById(i).addEventListener('input',calc);});calc();
   function basSet(root,range){var v=range.value+'%';root.querySelector('.bas-after').style.clipPath='inset(0 0 0 '+v+')';root.querySelector('.bas-line').style.left=v;}
@@ -1417,6 +1495,7 @@ html:has(.lb[open]){overflow:hidden}
       function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}n.textContent='0';requestAnimationFrame(step);});}
     if(!('IntersectionObserver' in window)||rm){el.classList.add('in');return;}
     var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){run();o.disconnect();}},{threshold:.3});o.observe(el);})();
+  [].forEach.call(document.querySelectorAll('.fs-chip'),function(c){c.addEventListener('click',function(){var q=document.getElementById('faq-q'),all=document.querySelector('.faq-pills .pill[data-f="all"]');if(all&&all.getAttribute('aria-pressed')!=='true')all.click();q.value=c.dataset.q;q.dispatchEvent(new Event('input'));var first=document.querySelector('#faq-list details:not([hidden])');if(first&&!first.open)first.open=true;(document.getElementById('faq-list')).scrollIntoView({behavior:'smooth',block:'start'});});});
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
