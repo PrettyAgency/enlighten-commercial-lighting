@@ -157,6 +157,17 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .gal figure{margin:0;border-radius:14px;overflow:hidden;position:relative;background:#E7E9E3}
 .gal .g-wide{grid-column:span 2;grid-row:span 2}
 .gal img{width:100%;height:100%;object-fit:cover;display:block}
+.gal [hidden]{display:none}
+.gal a{display:block;height:100%;color:inherit;text-decoration:none}
+.gal a img{transition:transform .35s ease}
+.gal a:hover img,.gal a:focus-visible img{transform:scale(1.05)}
+.gal a:focus-visible{outline:3px solid var(--g);outline-offset:-3px}
+.gal .g-more.in{animation:galIn .45s ease both}
+@keyframes galIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.gal .g-more.in{animation:none}.gal a img{transition:none}}
+.gal-more{display:flex;justify-content:center;margin-top:28px}
+.gal-more [hidden]{display:none}
+.gal-n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:24px;padding:0 8px;border-radius:999px;background:var(--g);color:#1B1B1B;font-size:13px}
 .gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,0));color:#ffffff;font-size:13px;font-weight:600}
 .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:100%;color:#5D615A;font-size:13px;font-weight:600;text-align:center;padding:16px;border:2px dashed #C5C9C0;border-radius:14px}
 /* testimonials */
@@ -617,13 +628,34 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
    <p class="eyebrow">Project gallery</p>
    <h2 class="h2" id="gal-h">Commercial lighting upgrades in action</h2>
   </div>
-  <div class="gal">
+  <div class="gal" id="gal">
    <figure class="g-wide"><img src="assets/after.webp" alt="Shopping centre car park at night lit by enLighten LED fittings"><figcaption>Shopping centre car park upgrade</figcaption></figure>
    <figure><img src="assets/gallery-carpark.webp" alt="Basement car park of a Sydney CBD office tower lit with enLighten LED fittings"><figcaption>Office tower basement car park</figcaption></figure>
    <figure><img src="assets/gallery-tower.webp" alt="Sydney CBD A-grade commercial office tower that received an enLighten lighting retrofit"><figcaption>Sydney CBD A-grade office tower</figcaption></figure>
    <figure><img src="assets/gallery-foyer.webp" alt="Office tower lift foyer lit by enLighten Chamaeleon LED fittings"><figcaption>Chamaeleon in a lift foyer</figcaption></figure>
    <figure><img src="assets/gallery-lux-model.webp" alt="Lux modelling heat map from an enLighten lighting design for an undercover car park entrance"><figcaption>Lighting design: lux modelling</figcaption></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/dee-why-rsl"><img src="assets/projects/dee-why-rsl.jpg" alt="Dee Why RSL car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Dee Why RSL car park</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/australia-post"><img src="assets/projects/australia-post.jpg" alt="Australia Post high bay upgrade, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Australia Post high bay upgrade</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/transforming-telstra-s-lighting-infrastructure-for-a-sustainable-future"><img src="assets/projects/telstra.jpg" alt="Telstra lighting infrastructure, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Telstra lighting infrastructure</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/caroline-springs-lake-reserve"><img src="assets/projects/caroline-springs.jpg" alt="Caroline Springs Lake Reserve, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Caroline Springs Lake Reserve</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/macquarie-park"><img src="assets/projects/macquarie-park.jpg" alt="Macquarie Park LED retrofit, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Macquarie Park LED retrofit</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/eureka-tower"><img src="assets/projects/eureka-tower.jpg" alt="Eureka Tower, Melbourne, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Eureka Tower, Melbourne</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/mosman-council-car-park"><img src="assets/projects/mosman-council.jpg" alt="Mosman Council car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Mosman Council car park</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/gastronomy-group"><img src="assets/projects/gastronomy-group.jpg" alt="Gastronomy Group commercial kitchen, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Gastronomy Group commercial kitchen</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/mango-hill-market-place"><img src="assets/projects/mango-hill.jpg" alt="Mango Hill Market Place, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Mango Hill Market Place</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/22-edgeworth-david-ave-hornsby"><img src="assets/projects/hornsby.jpg" alt="Office car park, Hornsby, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Office car park, Hornsby</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/abode-apartments"><img src="assets/projects/abode-apartments.jpg" alt="Abode Apartments fire stairs &amp; car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Abode Apartments fire stairs &amp; car park</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/food-manufacturing-facility"><img src="assets/projects/food-manufacturing.jpg" alt="Food manufacturing high bays, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Food manufacturing high bays</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/castlebar-cove-apartments"><img src="assets/projects/castlebar-cove.jpg" alt="Castlebar Cove apartment lobby, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Castlebar Cove apartment lobby</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/hyde-park-towers"><img src="assets/projects/hyde-park-towers.jpg" alt="Hyde Park Towers fire stairs, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Hyde Park Towers fire stairs</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/nab-house-sydney"><img src="assets/projects/nab-house.jpg" alt="NAB House foyer, Sydney, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>NAB House foyer, Sydney</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/st-vincent-de-paul-society"><img src="assets/projects/st-vincent-de-paul.jpg" alt="St Vincent de Paul warehouse, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>St Vincent de Paul warehouse</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/surfers-paradise-marriott-resort"><img src="assets/projects/marriott.jpg" alt="Surfers Paradise Marriott car park, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Surfers Paradise Marriott car park</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/trend-windows-doors"><img src="assets/projects/trend-windows.jpg" alt="Trend Windows &amp; Doors workshop, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Trend Windows &amp; Doors workshop</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/university-of-technology-sydney-city-campus"><img src="assets/projects/uts.jpg" alt="UTS City Campus, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>UTS City Campus</figcaption></a></figure>
+   <figure class="g-more" hidden><a href="https://www.enlighten.com.au/case-study/haighs-chocolates"><img src="assets/projects/haighs.jpg" alt="Haigh’s Chocolates warehouse, enLighten lighting case study" loading="lazy" decoding="async"><figcaption>Haigh’s Chocolates warehouse</figcaption></a></figure>
   </div>
+  <div class="gal-more"><button class="btn btn-ghost" type="button" id="gal-btn" aria-controls="gal">Load more projects <span class="gal-n">+20</span></button><a class="btn btn-ghost" id="gal-all" href="https://www.enlighten.com.au/case-study" hidden>View all case studies</a></div>
  </div>
 </section>
 
@@ -858,6 +890,10 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
     fe.hidden=n>0;fc.textContent=(q||fcat!=='all')?(n+' of '+fitems.length+' questions'):'';}
   fq.addEventListener('input',ffilter);
   [].forEach.call(fp,function(b){b.addEventListener('click',function(){fcat=b.dataset.f;[].forEach.call(fp,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});ffilter();});});
+  var gb=document.getElementById('gal-btn');
+  gb.addEventListener('click',function(){var m=[].slice.call(document.querySelectorAll('#gal .g-more'));
+    m.forEach(function(x,i){x.hidden=false;x.style.animationDelay=(i%4)*60+'ms';x.classList.add('in');});
+    gb.hidden=true;document.getElementById('gal-all').hidden=false;if(m[0])m[0].querySelector('a').focus({preventScroll:true});});
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
