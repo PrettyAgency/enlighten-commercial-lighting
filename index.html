@@ -176,9 +176,35 @@ html:has(.bas-modal[open]){overflow:hidden}
 .tech .card{border-top:4px solid var(--g)}
 .tech ul{margin:14px 0 0;padding-left:18px;font-size:14px;color:#4A4A4A}
 .tech li{margin-bottom:4px}
-.iaf{margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:#231F20;color:#ffffff;border-radius:16px;padding:28px 32px}
-.iaf p{margin:0;font-size:20px;font-weight:700}
-.iaf span{color:var(--g)}
+.iaf{margin-top:32px;position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:center;background:#17181A;color:#ffffff;border-radius:24px;padding:40px 44px}
+.iaf:before{content:"";position:absolute;z-index:-1;width:420px;height:420px;left:-140px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(151,201,59,.28),rgba(151,201,59,0) 65%)}
+.iaf-copy{position:relative}
+.iaf-h{margin:18px 0 8px;font-size:34px;line-height:1.1;font-weight:800;letter-spacing:-.01em}
+.iaf-h span{color:var(--g)}
+.iaf-s{margin:0 0 22px;color:#D2D2D2;font-size:16px;line-height:1.6}
+.iaf .btn .i{width:20px;height:20px}
+.iaf-sensor{position:relative;display:block;width:56px;height:56px}
+.iaf-sensor b{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--g);box-shadow:0 0 18px rgba(151,201,59,.8)}
+.iaf-sensor i{position:absolute;inset:0;border-radius:50%;border:2px solid var(--g);opacity:0;animation:iafPing 2.4s ease-out infinite}
+.iaf-sensor i:nth-child(2){animation-delay:.8s}.iaf-sensor i:nth-child(3){animation-delay:1.6s}
+@keyframes iafPing{0%{transform:scale(.25);opacity:.9}100%{transform:scale(1);opacity:0}}
+.iaf-viz{margin:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px 22px 14px}
+.iaf-viz figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-bottom:16px;font-size:13px;color:#C9CAC6}
+.iaf-viz figcaption b{flex-basis:100%;font-size:14px;color:#ffffff}
+.iaf-viz figcaption span{display:inline-flex;align-items:center;gap:7px}
+.iaf .k{width:12px;height:12px;border-radius:3px;display:inline-block}
+.iaf .k.hi{background:var(--g)}.iaf .k.lo{background:rgba(151,201,59,.35)}
+.iaf-chart{position:relative;height:150px}
+.iaf-bars{position:absolute;inset:0;display:grid;grid-template-columns:repeat(24,1fr);gap:4px;align-items:end}
+.iaf-bars i{display:block;height:var(--h);border-radius:4px 4px 2px 2px;background:rgba(151,201,59,.35);transform-origin:bottom;transform:scaleY(.04);transition:transform .7s cubic-bezier(.2,.8,.2,1) var(--d)}
+.iaf-bars i.hi{background:linear-gradient(180deg,#B5E05A,#97C93B);box-shadow:0 0 14px rgba(151,201,59,.45)}
+.iaf.in .iaf-bars i{transform:none}
+.iaf-now{position:absolute;top:-6px;bottom:0;left:0;width:2px;background:#ffffff;box-shadow:0 0 10px rgba(255,255,255,.8);opacity:0}
+.iaf-now:before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:50%;background:#ffffff}
+.iaf.in .iaf-now{opacity:1;animation:iafSweep 12s linear 1.4s infinite}
+@keyframes iafSweep{from{left:0}to{left:100%}}
+.iaf-axis{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#9A9B97}
+@media (prefers-reduced-motion:reduce){.iaf-sensor i{animation:none;opacity:.4;transform:scale(.7)}.iaf-bars i{transition:none;transform:none}.iaf.in .iaf-now{animation:none;left:58%}}
 /* products */
 .prod{display:flex;flex-direction:column;padding:0;overflow:hidden}
 .prod-img{background:linear-gradient(180deg,#F5F6F3,#ECEEE8);height:190px;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -211,6 +237,14 @@ html:has(.bas-modal[open]){overflow:hidden}
 .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:100%;color:#5D615A;font-size:13px;font-weight:600;text-align:center;padding:16px;border:2px dashed #C5C9C0;border-radius:14px}
 /* testimonials */
 .quote{display:flex;flex-direction:column;gap:20px}
+.tcar .quote{position:relative;overflow:hidden;border:0;border-top:4px solid var(--g);background:linear-gradient(180deg,#ffffff 0%,#FAFBF7 100%);box-shadow:0 2px 4px rgba(0,0,0,.04),0 18px 40px -18px rgba(35,31,32,.28);transition:transform .25s ease,box-shadow .25s ease}
+.tcar .quote:after{content:"\201D";position:absolute;right:18px;top:-18px;font-size:170px;line-height:1;font-weight:800;color:var(--g);opacity:.12;pointer-events:none}
+.tcar .quote:hover{transform:translateY(-6px);box-shadow:0 2px 4px rgba(0,0,0,.04),0 28px 50px -18px rgba(35,31,32,.38)}
+.tcar .quote blockquote{font-size:17px;color:#231F20;position:relative}
+.tcar .quote .stars{font-size:20px}
+.tcar .who{padding-top:18px;border-top:1px solid #ECEEE8}
+.tcar .who img{width:56px;height:56px;box-shadow:0 0 0 3px #ffffff,0 0 0 5px var(--g)}
+@media (prefers-reduced-motion:reduce){.tcar .quote{transition:none}.tcar .quote:hover{transform:none}}
 .quote blockquote{margin:0;font-size:16px;line-height:1.65;color:#333333}
 .quote blockquote:before{content:"\201C";display:block;font-size:56px;line-height:.6;color:var(--g);font-weight:800;margin-bottom:10px}
 .who{display:flex;align-items:center;gap:14px;margin-top:auto}
@@ -223,7 +257,7 @@ html:has(.bas-modal[open]){overflow:hidden}
 .certs img:first-child{width:380px}
 .certs img:last-child{width:200px}
 .tcar{position:relative}
-.ttrack{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 12px;scrollbar-width:none}
+.ttrack{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:14px 4px 34px;scrollbar-width:none}
 .ttrack::-webkit-scrollbar{display:none}
 .ttrack > *{scroll-snap-align:start}
 .ttrack:focus-visible{outline:3px solid var(--g);outline-offset:4px;border-radius:16px}
@@ -364,7 +398,7 @@ html:has(.bas-modal[open]){overflow:hidden}
  .tnext{right:-8px}
  .faq summary{font-size:16px}
  .ftr-grid{grid-template-columns:minmax(0,1fr)}
- .iaf{padding:22px}
+ .iaf{padding:28px 20px;grid-template-columns:minmax(0,1fr);gap:28px}.iaf-h{font-size:28px}.iaf-chart{height:120px}.iaf-bars{gap:2px}
  .case{padding:20px}
 }
 /* floating section dock */
@@ -745,7 +779,22 @@ html:has(.lb[open]){overflow:hidden}
    <div class="card"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span><h3>Daylight detection</h3><p>Daylight sensors hold lights back when enough natural light is available, so you don't pay to light spaces the sun already covers.</p><ul><li>Integrated in Chamaeleon</li><li>Optional on Tauro Black high bays</li></ul></div>
    <div class="card"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"></path></svg></span><h3>Smart controls</h3><p>Dimming modes, PE cells and emergency options let each fitting suit its location and operating hours.</p><ul><li>Vico: Eco Dim mode</li><li>Zorro 2: PE cell for dusk-to-dawn switching</li></ul></div>
   </div>
-  <div class="iaf"><p>Install <span>&amp;</span> forget: set up once, keep saving 24/7.</p><a data-tip="Go to the free ROI proposal form" class="btn" href="#roi-form">Get Your ROI Proposal</a></div>
+  <div class="iaf" id="iaf">
+   <div class="iaf-copy">
+    <span class="iaf-sensor" aria-hidden="true"><i></i><i></i><i></i><b></b></span>
+    <p class="iaf-h">Install <span>&amp;</span> forget.</p>
+    <p class="iaf-s">Set up once. Sensors decide when each space needs light, so it keeps saving 24/7 without anyone touching a switch.</p>
+    <a data-tip="Go to the free ROI proposal form" class="btn" href="#roi-form">Get Your ROI Proposal <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+   </div>
+   <figure class="iaf-viz">
+    <figcaption><b>24 hours in a sensor-controlled car park</b><span><em class="k hi"></em>Someone present: 100%</span><span><em class="k lo"></em>Empty: dims to standby</span></figcaption>
+    <div class="iaf-chart" role="img" aria-label="Illustration: across 24 hours the lights run at full brightness only during the hours someone is present, and dim to a low standby level the rest of the time.">
+     <div class="iaf-bars"><i class="lo" style="--h:20%;--d:0ms"></i><i class="lo" style="--h:20%;--d:45ms"></i><i class="lo" style="--h:20%;--d:90ms"></i><i class="lo" style="--h:20%;--d:135ms"></i><i class="lo" style="--h:20%;--d:180ms"></i><i class="hi" style="--h:100%;--d:225ms"></i><i class="lo" style="--h:20%;--d:270ms"></i><i class="lo" style="--h:20%;--d:315ms"></i><i class="hi" style="--h:100%;--d:360ms"></i><i class="hi" style="--h:100%;--d:405ms"></i><i class="lo" style="--h:20%;--d:450ms"></i><i class="hi" style="--h:100%;--d:495ms"></i><i class="hi" style="--h:100%;--d:540ms"></i><i class="hi" style="--h:100%;--d:585ms"></i><i class="lo" style="--h:20%;--d:630ms"></i><i class="lo" style="--h:20%;--d:675ms"></i><i class="hi" style="--h:100%;--d:720ms"></i><i class="hi" style="--h:100%;--d:765ms"></i><i class="hi" style="--h:100%;--d:810ms"></i><i class="lo" style="--h:20%;--d:855ms"></i><i class="lo" style="--h:20%;--d:900ms"></i><i class="hi" style="--h:100%;--d:945ms"></i><i class="lo" style="--h:20%;--d:990ms"></i><i class="lo" style="--h:20%;--d:1035ms"></i></div>
+     <div class="iaf-now" aria-hidden="true"></div>
+    </div>
+    <div class="iaf-axis" aria-hidden="true"><span>12am</span><span>6am</span><span>12pm</span><span>6pm</span><span>12am</span></div>
+   </figure>
+  </div>
  </div>
 </section>
 
@@ -1302,6 +1351,8 @@ html:has(.lb[open]){overflow:hidden}
     if(rm){pb.setAttribute('aria-pressed','true');pb.setAttribute('data-tip','Play the rotating images');}
     document.addEventListener('visibilitychange',tick);
     addEventListener('load',function(){load(1);});tick();})();
+  (function(){var el=document.getElementById('iaf');if(!el)return;if(!('IntersectionObserver' in window)){el.classList.add('in');return;}
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.add('in');o.disconnect();}});},{threshold:.35});o.observe(el);})();
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
