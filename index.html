@@ -747,8 +747,8 @@ textarea.inp{height:auto;min-height:110px;padding:12px 14px;line-height:1.5;resi
       document.getElementById(ids[k]).hidden=ok;if(!ok)bad.push(k);
     });
     if(bad.length){e.preventDefault();el[bad[0]].focus();return;}
-    /* Prototype only: remove the next line in Umbraco so the form posts normally */
-    e.preventDefault();f.hidden=true;document.getElementById('roi-ok').hidden=false;
+    /* Prototype only: in Umbraco, let the form post normally and set its redirect to this URL */
+    e.preventDefault();window.location.href='https://www.enlighten.com.au/form-processing/confirmation';
   });
   function calc(){
     function n(i){return +document.getElementById(i).value||0;}
