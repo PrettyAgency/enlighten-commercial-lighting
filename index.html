@@ -167,6 +167,11 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .who img{width:52px;height:52px;border-radius:50%;object-fit:cover}
 .who b{display:block;color:#231F20;font-size:15px}
 .who span{font-size:13px;color:#555555}
+.quote .stars{margin:0 0 -8px;color:#E8B10A;font-size:18px;letter-spacing:2px;line-height:1}
+.certs{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px 48px;margin:40px auto 8px}
+.certs img{height:auto;max-width:100%}
+.certs img:first-child{width:380px}
+.certs img:last-child{width:200px}
 .tcar{position:relative}
 .ttrack{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px) / 3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 12px;scrollbar-width:none}
 .ttrack::-webkit-scrollbar{display:none}
@@ -215,7 +220,7 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .ftr a{color:#E5E5E5 !important;text-decoration:none}
 .ftr a:hover{color:#97C93B !important}
 .ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.ftr-logo{background:#ffffff;border-radius:10px;padding:10px 14px;display:inline-block;margin-bottom:16px}
+.ftr-logo{display:inline-block;margin-bottom:16px}
 .ftr-bot{border-top:1px solid #2C2C2C;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
 .soc{display:flex;gap:10px;margin-top:16px}
 .soc a{width:44px;height:44px;border-radius:50%;border:1px solid #3A3A3A;display:flex;align-items:center;justify-content:center}
@@ -592,12 +597,23 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
   <div class="tcar">
   <button class="tarrow tprev" type="button" aria-label="Previous review" id="tprev"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
   <div class="ttrack" id="ttrack" tabindex="0" aria-label="Customer reviews">
-   <figure class="card quote" style="margin: 0"><blockquote>Excellent products with sensational customer support and knowledge of the fittings, perfect prices.</blockquote><figcaption class="who"><img src="assets/av1.webp" alt=""><span><b>Alex Mattiolo</b><span>A1 Sparky</span></span></figcaption></figure>
-   <figure class="card quote" style="margin: 0"><blockquote>As an installer, I've worked with various batten fittings, and enLighten's Vico stands out. Its large central and end terminal blocks simplify installation, allowing electricians to significantly reduce time.</blockquote><figcaption class="who"><img src="assets/av2.webp" alt=""><span><b>Andrew Cowan</b><span>Electrical installer</span></span></figcaption></figure>
-   <figure class="card quote" style="margin: 0"><blockquote>Wattblock has partnered with enLighten for 6 years, installing motion-sensored LED lights in residential strata plans, offering high-quality products and dedicated after-sales service.</blockquote><figcaption class="who"><img src="assets/av3.webp" alt=""><span><b>Brent Clark</b><span>Wattblock</span></span></figcaption></figure>
-   <figure class="card quote" style="margin: 0"><blockquote>We've been using enLighten products for years and we just don't have the failure rates we do with other fittings. As a club, enLighten has become our go-to brand, especially for weatherproof fittings in our car parks.</blockquote><figcaption class="who"><img src="assets/av4.webp" alt=""><span><b>Jim Stapleton</b><span>Dee Why RSL</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>Wattblock has partnered with enLighten for 6 years, installing motion-sensored LED lights in residential strata plans, offering high-quality products and dedicated after-sales service.</blockquote><figcaption class="who"><img src="assets/reviews/brent-clark.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Brent Clark</b><span>Wattblock</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>EnLighten is our go to for engineered lighting solutions built to last in the harsh Australian environment</blockquote><figcaption class="who"><img src="assets/reviews/rob-filipovic.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Rob Filipovic</b><span>PowerWell SEM</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>As an installer, I’ve worked with various batten fittings, and enLighten’s Vico stands out. Its large central and end terminal blocks simplify installation, allowing electricians to significantly reduce time while ensuring a seamless and efficient process.</blockquote><figcaption class="who"><img src="assets/reviews/andrew-cowan.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Andrew Cowan</b><span>Tyan Electrical</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>enLighten is at the forefront of the lighting industry, love working alongside their team</blockquote><figcaption class="who"><img src="assets/reviews/paul-humphreys.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Paul Humphreys</b><span>HIX Group</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>enLighten have excellent products &amp; 1st class technical &amp; after sales service. Highly recommended</blockquote><figcaption class="who"><img src="assets/reviews/ray-sherriff.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Ray Sherriff</b><span>O’Brien Electrical, Granville</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>I have used enLighten lights for over 10 years, they definitely stand the test of time</blockquote><figcaption class="who"><img src="assets/reviews/deian-cousins.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Deian Cousins</b><span>DCE Contracting</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>enLighten designs products around our needs. They continue to innovate both electronically and aesthetically</blockquote><figcaption class="who"><img src="assets/reviews/peter-voigt.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Peter Voigt</b><span>Voigties Volts Project Solutions</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>enLighten’s engineering team demonstrated an exceptional level of technical expertise, providing us with a customised lighting solution that not only met our stringent specifications but surpassed our performance expectations. The support we received during and after implementation was first class, with their team always available to assist with conformance verification of the project.</blockquote><figcaption class="who"><img src="assets/reviews/nick-mott.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Nick Mott</b><span>Plant Superintendent</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>Thank you for managing the delicate balance of quality and price so well. We work with other suppliers who are higher quality but more expensive, and others who are cheaper but lower quality. Not many have found the sweet spot you have, which is why enLighten is our favourite brand of commercial lighting.</blockquote><figcaption class="who"><img src="assets/reviews/asher-christophers.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Asher Christophers</b><span>Austep</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>We’ve been using enLighten products for years now, and we just don’t have the failure rates with them like we do with other fittings. The lighting in our spaces is now clean and consistent. As a club, enLighten has become our go-to brand for lighting solutions, especially for weatherproof fittings in our car parks.</blockquote><figcaption class="who"><img src="assets/reviews/jim-stapleton.jpg" alt="" width="52" height="52" loading="lazy"><span><b>Jim Stapleton</b><span>Dee Why RSL</span></span></figcaption></figure>
+   <figure class="card quote" style="margin: 0"><p class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote>Excellent products with sensational customer support and knowledge of the fittings, perfect prices.</blockquote><figcaption class="who"><img src="assets/av1.webp" alt="" width="52" height="52" loading="lazy"><span><b>Alex Mattiolo</b><span>A1 Sparky</span></span></figcaption></figure>
   </div>
   <button class="tarrow tnext" type="button" aria-label="Next review" id="tnext"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+  </div>
+  <div class="certs" aria-label="Certifications and accreditations">
+   <img src="assets/iso-certifications.png" alt="Global-Mark certified: ISO 9001 Quality Management, ISO 14001 Environmental Management, ISO 45001 OHS Management System" width="769" height="202" loading="lazy">
+   <img src="assets/lighting-council-australia.png" alt="Lighting Council Australia accredited" width="700" height="286" loading="lazy">
   </div>
   <div class="case"><p>Case study<small>Sydney CBD A-grade commercial office tower</small></p><a class="btn btn-ghost" href="https://www.enlighten.com.au/case-study/sydney-cbd-a-grade-commercial-office-tower">Read the case study</a></div>
  </div>
@@ -695,7 +711,7 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
  <div class="wrap">
   <div class="ftr-grid">
    <div>
-    <span class="ftr-logo"><img src="assets/logo.svg" alt="enLighten Australia" style="width: 120px; height: auto; display: block"></span>
+    <span class="ftr-logo"><img src="assets/logo-white.svg" alt="enLighten Australia" style="width: 120px; height: auto; display: block"></span>
     <p style="margin: 0 0 10px">Our passion is delivering energy savings through intelligent LED lighting solutions.</p>
     <p style="margin: 0">As a privately owned Australian company, we design and manufacture a range of products exclusively for our customers.</p>
     <div class="soc">
