@@ -120,9 +120,44 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .titem small{display:block;font-weight:500;color:#555555;font-size:13px}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:32px}
-.stat{background:#ffffff;border-radius:14px;padding:22px;border:1px solid #E3E5DF}
-.stat b{display:block;font-size:34px;line-height:1.1;color:#231F20;font-weight:800}
-.stat span{font-size:14px;color:#4A4A4A}
+.stat{position:relative;overflow:hidden;background:#ffffff;border-radius:18px;padding:22px;border:1px solid #E3E5DF;box-shadow:0 14px 30px -22px rgba(35,31,32,.35);transition:transform .25s ease,box-shadow .25s ease}
+.stat:hover{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(35,31,32,.45)}
+.stat b{display:block;font-size:34px;line-height:1.1;color:#231F20;font-weight:800;letter-spacing:-.01em}
+.stat b span{font:inherit;color:inherit}
+.stat>span,.stat div>span{display:block;font-size:14px;color:#4A4A4A;margin-top:4px}
+.st-share,.st-war{display:flex;gap:16px;align-items:center}
+.st-ring{width:64px;height:64px;flex:none;transform:rotate(-90deg)}
+.st-ring circle{fill:none;stroke-width:8}
+.st-ring .trk{stroke:#EEF2E6}
+.st-ring .val{stroke:var(--g);stroke-linecap:round;stroke-dasharray:163.4;stroke-dashoffset:163.4;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1) .2s}
+.stats.in .st-ring .val{stroke-dashoffset:130.7}
+.st-ring .bulb{fill:none;stroke:#5E8F18;stroke-width:2.2;stroke-linecap:round;transform:rotate(90deg);transform-origin:32px 32px}
+.st-hero{background:linear-gradient(150deg,#1F2420 0%,#17181A 70%);border-color:#17181A;color:#ffffff}
+.st-hero:after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(151,201,59,.35),rgba(151,201,59,0) 70%)}
+.st-hero b{color:#ffffff}
+.st-hero b span{color:var(--g)}
+.st-hero>span{color:#C9CAC6}
+.st-tag{display:inline-block!important;margin:0 0 10px!important;font-size:11px!important;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1B1B1B!important;background:var(--g);padding:3px 9px;border-radius:999px}
+.st-bars{margin-top:14px;display:grid;gap:8px}
+.st-bar{display:grid;grid-template-columns:92px 1fr;align-items:center;gap:8px}
+.st-bar em{font-style:normal;font-size:11px;color:#A9AAA6}
+.st-bar i{display:block;height:8px;border-radius:6px;background:rgba(255,255,255,.22);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1) .3s}
+.st-new i{background:var(--g);box-shadow:0 0 10px rgba(151,201,59,.6);transition-delay:.9s}
+.stats.in .st-bar i{width:var(--w)}
+.st-line{position:relative;margin-top:16px;height:30px}
+.st-line:before{content:"";position:absolute;left:0;right:0;top:6px;height:4px;border-radius:4px;background:#EEF2E6}
+.st-line .win{position:absolute;top:2px;height:12px;left:20%;width:0;border-radius:6px;background:var(--g);transition:width 1s cubic-bezier(.2,.8,.2,1) .4s}
+.stats.in .st-line .win{width:20%}
+.st-line i{position:absolute;top:4px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#ffffff;border:2px solid #C9CBC5}
+.st-line i:nth-of-type(1){left:0}.st-line i:nth-of-type(2){left:20%}.st-line i:nth-of-type(3){left:40%}.st-line i:nth-of-type(4){left:60%}.st-line i:nth-of-type(5){left:80%}.st-line i:nth-of-type(6){left:100%}
+.st-line .lbl{position:absolute;left:0;right:0;top:16px;display:flex;justify-content:space-between;font-size:10px;color:#888888}
+.st-line .lbl span{display:inline;margin:0;font-size:10px;color:#888888}
+.st-shield{width:56px;height:56px;flex:none;padding:12px;border-radius:16px;background:#EEF6E0;fill:none;stroke:#3F6B0A;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.st-pips{display:flex;gap:5px;margin-top:10px}
+.st-pips i{width:22px;height:6px;border-radius:4px;background:#EEF2E6;transition:background .3s}
+.stats.in .st-pips i{background:var(--g)}
+.stats.in .st-pips i:nth-child(2){transition-delay:.15s}.stats.in .st-pips i:nth-child(3){transition-delay:.3s}.stats.in .st-pips i:nth-child(4){transition-delay:.45s}.stats.in .st-pips i:nth-child(5){transition-delay:.6s}
+@media (prefers-reduced-motion:reduce){.stat,.st-ring .val,.st-bar i,.st-line .win,.st-pips i{transition:none}.stat:hover{transform:none}}
 .bas{position:relative;border-radius:18px;overflow:hidden;background:#111111;aspect-ratio:4/3;user-select:none;box-shadow:0 18px 40px rgba(0,0,0,.18)}
 .bas-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .bas-after{position:absolute;inset:0}
@@ -208,7 +243,7 @@ html:has(.bas-modal[open]){overflow:hidden}
 @media (prefers-reduced-motion:reduce){.iaf-sensor i{animation:none;opacity:.4;transform:scale(.7)}.iaf-bars i{transition:none;transform:none}.iaf.in .iaf-now{animation:none;left:58%}}
 /* products */
 .prod{display:flex;flex-direction:column;padding:0;overflow:hidden}
-.prod-img{background:linear-gradient(180deg,#F5F6F3,#ECEEE8);height:190px;display:flex;align-items:center;justify-content:center;padding:20px}
+.prod-img{background:#ffffff;border-bottom:1px solid #EEF0EA;height:190px;display:flex;align-items:center;justify-content:center;padding:20px}
 .prod-img img{max-width:88%;max-height:150px;object-fit:contain}
 .prod-body{padding:24px;display:flex;flex-direction:column;flex:1}
 .prod-body h3{margin:0 0 4px}
@@ -672,11 +707,29 @@ html:has(.lb[open]){overflow:hidden}
    <p class="eyebrow">Brighter, smarter, more efficient</p>
    <h2 class="h2" id="why-h">Why upgrade to smart LED commercial lighting?</h2>
    <p class="lead">Lighting accounts for around 20% of a commercial building's energy use, so choosing the right product the first time has never been more important. Upgrading to energy-efficient LED lighting can slash your energy and maintenance costs while helping you meet your corporate sustainability goals.</p>
-   <div class="stats">
-    <div class="stat"><b>~20%</b><span>of a commercial building's energy use is lighting</span></div>
-    <div class="stat"><b>Up to 93%</b><span>energy savings regularly delivered by our LED solutions</span></div>
-    <div class="stat"><b>1-2 years</b><span>typical payback period on an upgrade</span></div>
-    <div class="stat"><b>5 years</b><span>minimum warranty for peace of mind</span></div>
+   <div class="stats" id="stats">
+    <div class="stat st-share">
+     <svg class="st-ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" class="trk"></circle><circle cx="32" cy="32" r="26" class="val"></circle><path d="M32 22v5M32 37v5M27 32h-5M42 32h-5M28.5 28.5l-2.5-2.5M38 38l-2.5-2.5M28.5 35.5 26 38M38 26l-2.5 2.5" class="bulb"></path></svg>
+     <div><b>~<span data-count="20">20</span>%</b><span>of a commercial building's energy use is lighting</span></div>
+    </div>
+    <div class="stat st-hero">
+     <span class="st-tag">Our results</span>
+     <b>Up to <span data-count="93">93</span>%</b>
+     <span>energy savings regularly delivered by our LED solutions</span>
+     <div class="st-bars" aria-hidden="true">
+      <div class="st-bar"><em>Old lighting</em><i style="--w:100%"></i></div>
+      <div class="st-bar st-new"><em>enLighten LED</em><i style="--w:7%"></i></div>
+     </div>
+    </div>
+    <div class="stat st-pay">
+     <b><span data-count="1">1</span>&ndash;<span data-count="2">2</span> years</b><span>typical payback period on an upgrade</span>
+     <div class="st-line" aria-hidden="true"><span class="win"></span><i></i><i></i><i></i><i></i><i></i><i></i><div class="lbl"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5 yrs</span></div></div>
+    </div>
+    <div class="stat st-war">
+     <svg class="st-shield" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></svg>
+     <div><b><span data-count="5">5</span> years</b><span>minimum warranty for peace of mind</span>
+     <div class="st-pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
    </div>
   </div>
   <div>
@@ -1359,6 +1412,11 @@ html:has(.lb[open]){overflow:hidden}
     addEventListener('load',function(){load(1);});tick();})();
   (function(){var el=document.getElementById('iaf');if(!el)return;if(!('IntersectionObserver' in window)){el.classList.add('in');return;}
     var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.add('in');o.disconnect();}});},{threshold:.35});o.observe(el);})();
+  (function(){var el=document.getElementById('stats');if(!el)return;var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function run(){el.classList.add('in');if(rm)return;[].forEach.call(el.querySelectorAll('[data-count]'),function(n){var to=+n.dataset.count,t0=null,dur=to>9?1300:700;
+      function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1);n.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}n.textContent='0';requestAnimationFrame(step);});}
+    if(!('IntersectionObserver' in window)||rm){el.classList.add('in');return;}
+    var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){run();o.disconnect();}},{threshold:.3});o.observe(el);})();
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
