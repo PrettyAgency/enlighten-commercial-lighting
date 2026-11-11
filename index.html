@@ -74,6 +74,12 @@ body{margin:0}
 .fld label{font-size:14px;font-weight:600;color:#231F20}
 .fld label span{color:#A3261B}
 .fld label em{font-style:normal;font-weight:500;color:#666666}
+#roi .fld>label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+#roi .fld{position:relative;gap:4px;margin-bottom:8px}
+#roi .frow{column-gap:8px}
+.inp::placeholder{color:#6B6B6B;opacity:1}
+#roi select.inp:invalid{color:#6B6B6B}
+#roi select.inp option{color:#231F20}
 .inp{height:50px;border-radius:8px;border:1.5px solid #C9CBC5;background:#ffffff;padding:0 14px;font-size:16px;font-family:inherit;color:#231F20;width:100%}
 textarea.inp{height:auto;min-height:110px;padding:12px 14px;line-height:1.5;resize:vertical}
 .inp:focus{outline:3px solid rgba(151,201,59,.55);border-color:#5E8F18}
@@ -321,19 +327,19 @@ textarea.inp{height:auto;min-height:110px;padding:12px 14px;line-height:1.5;resi
      <form id="roi" novalidate aria-label="ROI proposal request">
       <div class="fld">
        <label for="f-name">Full name <span aria-hidden="true">*</span></label>
-       <input id="f-name" name="name" class="inp" type="text" autocomplete="name" aria-required="true" aria-invalid="false" aria-describedby="e-name">
+       <input id="f-name" name="name" class="inp" type="text" autocomplete="name" placeholder="Full name *" aria-required="true" aria-invalid="false" aria-describedby="e-name">
        <span class="err" hidden id="e-name">Please enter your full name.</span>
       </div>
       <div class="frow">
        <div class="fld">
         <label for="f-mob">Mobile number <span aria-hidden="true">*</span></label>
-        <input id="f-mob" name="mobile" class="inp" type="tel" autocomplete="tel" inputmode="tel" aria-required="true" aria-invalid="false" aria-describedby="e-mob">
+        <input id="f-mob" name="mobile" class="inp" type="tel" autocomplete="tel" inputmode="tel" placeholder="Mobile number *" aria-required="true" aria-invalid="false" aria-describedby="e-mob">
         <span class="err" hidden id="e-mob">Enter a valid Australian mobile, e.g. 0412 345 678.</span>
        </div>
        <div class="fld">
         <label for="f-state">State <span aria-hidden="true">*</span></label>
-        <select id="f-state" name="state" class="inp" aria-required="true" aria-invalid="false" aria-describedby="e-state">
-         <option value="">Select state</option>
+        <select id="f-state" name="state" class="inp" required aria-required="true" aria-invalid="false" aria-describedby="e-state">
+         <option value="">State *</option>
          <option>New South Wales</option>
          <option>Australian Capital Territory</option>
          <option>Queensland</option>
@@ -348,11 +354,11 @@ textarea.inp{height:auto;min-height:110px;padding:12px 14px;line-height:1.5;resi
       </div>
       <div class="fld">
        <label for="f-co">Company <em>(optional)</em></label>
-       <input id="f-co" name="company" class="inp" type="text" autocomplete="organization">
+       <input id="f-co" name="company" class="inp" type="text" autocomplete="organization" placeholder="Company (optional)">
       </div>
       <div class="fld">
        <label for="f-email">Email <span aria-hidden="true">*</span></label>
-       <input id="f-email" name="email" class="inp" type="email" autocomplete="email" aria-required="true" aria-invalid="false" aria-describedby="e-email">
+       <input id="f-email" name="email" class="inp" type="email" autocomplete="email" placeholder="Email *" aria-required="true" aria-invalid="false" aria-describedby="e-email">
        <span class="err" hidden id="e-email">Please enter a valid email address.</span>
       </div>
       <div class="fld">
