@@ -109,6 +109,24 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .bas-line{position:absolute;top:0;bottom:0;width:3px;margin-left:-1.5px;background:#ffffff;z-index:2;pointer-events:none}
 .bas-knob{position:absolute;top:50%;left:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:#ffffff;color:#231F20;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 .bas-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:3}
+.bas-fs{position:absolute;right:14px;bottom:14px;z-index:4;width:44px;height:44px;border:0;border-radius:10px;background:rgba(0,0,0,.6);color:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .15s,transform .15s}
+.bas-fs:hover{background:rgba(0,0,0,.82);transform:scale(1.06)}
+.bas-fs:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+.bas-modal{border:0;padding:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;background:transparent;color:#ffffff;font-family:Montserrat,Helvetica,Arial,sans-serif}
+.bas-modal::backdrop{background:rgba(12,13,14,.92)}
+.bas-modal[open]{display:flex;align-items:center;justify-content:center;animation:basIn .25s ease}
+@keyframes basIn{from{opacity:0}to{opacity:1}}
+html:has(.bas-modal[open]){overflow:hidden}
+.bas-modal-in{width:min(94vw,calc((100dvh - 150px) * 4 / 3));display:flex;flex-direction:column;gap:14px}
+.bas-modal-bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bas-modal-bar p{margin:0;font-size:15px;font-weight:600;color:#E6E7E3}
+.bas-close{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s}
+.bas-close:hover{background:rgba(255,255,255,.18)}
+.bas-close:focus-visible{outline:3px solid #97C93B;outline-offset:2px}
+.bas-lg{width:100%;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.bas-lg .bas-knob{width:60px;height:60px;margin:-30px 0 0 -30px}
+.bas-modal-hint{margin:0;text-align:center;font-size:13px;color:#A9AAA6}
+@media (prefers-reduced-motion:reduce){.bas-modal[open]{animation:none}}
 .bas:focus-within .bas-knob{outline:3px solid var(--g);outline-offset:2px}
 .cap{font-size:13px;color:#555555;margin:10px 0 0}
 /* applications */
@@ -484,6 +502,7 @@ html{scroll-behavior:smooth}
     <span class="bas-tag bas-tag-r">After</span>
     <div class="bas-line" style="left: 50%"><span class="bas-knob"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></div>
     <input class="bas-range" type="range" min="0" max="100" value="50" id="bas-range" aria-label="Drag to compare the car park before and after the LED upgrade">
+    <button class="bas-fs" type="button" id="bas-fs" aria-haspopup="dialog" aria-controls="bas-modal" title="View full screen"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg><span class="sr">View before and after full screen</span></button>
    </div>
    <p class="cap">Drag the slider: shopping centre car park before and after an enLighten LED upgrade.</p>
    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px">
@@ -870,6 +889,23 @@ html{scroll-behavior:smooth}
 </footer>
 
 </div>
+<dialog class="bas-modal" id="bas-modal" aria-labelledby="bas-modal-t" style="--g: #97C93B">
+ <div class="bas-modal-in">
+  <div class="bas-modal-bar">
+   <p id="bas-modal-t">Before &amp; after: shopping centre car park LED upgrade</p>
+   <button class="bas-close" type="button" id="bas-close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg><span class="sr">Close full screen view</span></button>
+  </div>
+  <div class="bas bas-lg" id="bas-lg">
+   <img class="bas-img" src="assets/before.webp" alt="Shopping centre car park at night before the LED upgrade, with dark patches between light poles">
+   <div class="bas-after" style="clip-path: inset(0 0 0 50%)"><img class="bas-img" src="assets/after.webp" alt="The same shopping centre car park after the enLighten LED upgrade, evenly lit with bright white light"></div>
+   <span class="bas-tag">Before</span>
+   <span class="bas-tag bas-tag-r">After</span>
+   <div class="bas-line" style="left: 50%"><span class="bas-knob"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"></path></svg></span></div>
+   <input class="bas-range" type="range" min="0" max="100" value="50" id="bas-range-lg" aria-label="Drag to compare the car park before and after the LED upgrade">
+  </div>
+  <p class="bas-modal-hint">Drag the handle, or use the arrow keys, to compare before and after.</p>
+ </div>
+</dialog>
 <nav class="dock" id="dock" aria-label="Page sections" aria-hidden="true">
  <div class="dock-in">
   <div class="dock-links">
@@ -910,8 +946,14 @@ html{scroll-behavior:smooth}
     document.getElementById('r-pct').textContent=pct+'%';
   }
   ['c-n','c-h','c-o','c-l','c-t'].forEach(function(i){document.getElementById(i).addEventListener('input',calc);});calc();
-  var r=document.getElementById('bas-range'),bas=document.getElementById('bas');
-  r.addEventListener('input',function(){var v=r.value+'%';bas.querySelector('.bas-after').style.clipPath='inset(0 0 0 '+v+')';bas.querySelector('.bas-line').style.left=v;});
+  function basSet(root,range){var v=range.value+'%';root.querySelector('.bas-after').style.clipPath='inset(0 0 0 '+v+')';root.querySelector('.bas-line').style.left=v;}
+  var r=document.getElementById('bas-range'),bas=document.getElementById('bas'),rl=document.getElementById('bas-range-lg'),basLg=document.getElementById('bas-lg'),bm=document.getElementById('bas-modal'),bfs=document.getElementById('bas-fs');
+  r.addEventListener('input',function(){basSet(bas,r);});
+  rl.addEventListener('input',function(){basSet(basLg,rl);r.value=rl.value;basSet(bas,r);});
+  bfs.addEventListener('click',function(){rl.value=r.value;basSet(basLg,rl);if(bm.showModal)bm.showModal();else bm.setAttribute('open','');rl.focus();});
+  document.getElementById('bas-close').addEventListener('click',function(){bm.close?bm.close():bm.removeAttribute('open');});
+  bm.addEventListener('click',function(e){if(e.target===bm)bm.close();});
+  bm.addEventListener('close',function(){bfs.focus();});
   var t=document.getElementById('ttrack');
   function go(dir){var c=t.firstElementChild;if(!c)return;var step=c.getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||24),max=t.scrollWidth-t.clientWidth-2;
     if(dir>0&&t.scrollLeft>=max)t.scrollTo({left:0});else if(dir<0&&t.scrollLeft<=2)t.scrollTo({left:max+2});else t.scrollBy({left:dir*step});}
