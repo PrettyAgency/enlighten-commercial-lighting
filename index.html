@@ -75,6 +75,7 @@ body{margin:0}
 .fld label span{color:#A3261B}
 .fld label em{font-style:normal;font-weight:500;color:#666666}
 .inp{height:50px;border-radius:8px;border:1.5px solid #C9CBC5;background:#ffffff;padding:0 14px;font-size:16px;font-family:inherit;color:#231F20;width:100%}
+textarea.inp{height:auto;min-height:110px;padding:12px 14px;line-height:1.5;resize:vertical}
 .inp:focus{outline:3px solid rgba(151,201,59,.55);border-color:#5E8F18}
 .inp.bad{border-color:#B3261E;background:#FFF7F6}
 .err{font-size:13px;color:#A3261B;font-weight:600}
@@ -353,6 +354,10 @@ body{margin:0}
        <label for="f-email">Email <span aria-hidden="true">*</span></label>
        <input id="f-email" name="email" class="inp" type="email" autocomplete="email" aria-required="true" aria-invalid="false" aria-describedby="e-email">
        <span class="err" hidden id="e-email">Please enter a valid email address.</span>
+      </div>
+      <div class="fld">
+       <label for="f-msg">Project details <em>(optional)</em></label>
+       <textarea id="f-msg" name="message" class="inp" rows="4" placeholder="Tell us about your project"></textarea>
       </div>
       <button class="btn fbtn" type="submit">Get My ROI Proposal <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
       <p class="fnote">* Required. We only use your details to prepare your proposal. <a href="https://www.enlighten.com.au/privacy">Privacy Notice</a></p>
