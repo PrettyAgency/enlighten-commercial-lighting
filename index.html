@@ -205,6 +205,20 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
 .faq details[open] summary:after{content:"\2212"}
 .faq .ans{padding:0 48px 22px 0;font-size:16px;color:#444444}
 .faq .ans p{margin:0 0 10px}
+.faq-tools{margin-bottom:8px}
+.faq-search{display:flex;align-items:center;gap:10px;height:54px;padding:0 18px;background:#ffffff;border:1.5px solid #C9CBC5;border-radius:999px;color:#666666}
+.faq-search:focus-within{outline:3px solid rgba(151,201,59,.55);border-color:#5E8F18}
+.faq-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:#231F20;height:100%}
+.faq-search input::placeholder{color:#6B6B6B;opacity:1}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.faq-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{font:inherit;font-size:14px;font-weight:600;min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid #C9CBC5;background:#ffffff;color:#231F20;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.pill:hover{border-color:#5E8F18}
+.pill:focus-visible{outline:3px solid rgba(151,201,59,.55);outline-offset:2px}
+.pill[aria-pressed="true"]{background:#231F20;border-color:#231F20;color:#ffffff}
+.faq-count{margin:14px 0 0;font-size:13px;color:#555555}
+.faq-empty{padding:28px 0;color:#444444}
+.faq-empty a{color:#3F6B0A;font-weight:700}
 .faq-side{position:sticky;top:24px;background:#231F20;color:#ffffff;border-radius:20px;padding:32px}
 .faq-side h3{margin:0 0 8px;font-size:22px}
 .faq-side p{margin:0 0 20px;color:#D2D2D2;font-size:15px}
@@ -691,27 +705,43 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
    <p class="lead" style="margin-bottom: 28px">Straight answers about costs, savings, sensors, standards and rebates.</p>
    <div class="faq-side"><h3>Still have a question?</h3><p>Talk to a commercial lighting specialist or request your ROI proposal.</p><a class="btn" href="tel:1800365444" style="width: 100%; margin-bottom: 12px">Call 1800 365 444</a><a class="btn btn-ghost-light" href="#roi-form" style="width: 100%">Get Your ROI Proposal</a></div>
   </div>
-  <div class="faq">
-   <details open><summary>What is commercial LED lighting?</summary><div class="ans"><p>Commercial LED lighting is energy-efficient lighting designed for business and public buildings such as offices, warehouses, car parks, retail and strata common areas. Compared with older fluorescent, metal halide or halogen fittings, LEDs use less power, last longer and can be paired with sensors and smart controls.</p></div></details>
-   <details><summary>How much energy can commercial LED lighting save?</summary><div class="ans"><p>Savings depend on your existing fittings, operating hours and whether sensors are added. enLighten's LED solutions regularly deliver energy savings of up to 93%, with the biggest savings in spaces that are lit around the clock, such as car parks and stairwells.</p></div></details>
-   <details><summary>How much does it cost to upgrade commercial lighting?</summary><div class="ans"><p>Cost depends on the number and type of fittings, mounting heights, the controls you need and your site's access requirements. Your ROI proposal sets out recommended products and pricing for your site, alongside the expected savings.</p></div></details>
-   <details><summary>What is the return on investment for LED lighting?</summary><div class="ans"><p>The return comes from lower energy use, reduced standby consumption with sensors, and fewer replacements and maintenance call-outs. Because lighting accounts for around 20% of a commercial building's energy use, these savings add up quickly.</p></div></details>
-   <details><summary>How long does it take to recover the cost of an LED upgrade?</summary><div class="ans"><p>Our LED lighting solutions typically pay for themselves in 1 to 2 years. Sites with long operating hours usually see the fastest payback. Your ROI proposal estimates the payback period for your building.</p></div></details>
-   <details><summary>What are the benefits of smart commercial lighting?</summary><div class="ans"><p>Smart lighting adds motion sensors, daylight detection and dimming controls to efficient LED fittings. Lights run only at the level each space needs, which reduces energy use and wear while keeping areas safe and well lit.</p></div></details>
-   <details><summary>Can motion sensors reduce commercial lighting costs?</summary><div class="ans"><p>Yes. Motion sensors dim lights to a low standby level when an area is empty and bring them back to full brightness when someone arrives. For example, Vico runs at 20% standby brightness, and Chamaeleon has standby power as low as 3W.</p></div></details>
-   <details><summary>How does daylight detection work?</summary><div class="ans"><p>A daylight sensor measures natural light. When there is enough daylight, it holds the fitting off or dimmed, and it switches the light back on as daylight fades. It is ideal for perimeter car parks, warehouses with skylights and outdoor areas.</p></div></details>
-   <details><summary>What lighting is best for commercial offices?</summary><div class="ans"><p>Offices need even, glare-controlled light at the levels recommended for each task under AS/NZS 1680. Efficient LED fittings combined with occupancy and daylight controls give comfortable light while cutting energy use. We can recommend fittings for your floor plate.</p></div></details>
-   <details><summary>What LED lighting is suitable for warehouses?</summary><div class="ans"><p>Warehouses usually need high bay fittings matched to the mounting height. Tauro Black delivers up to 165 lumens per watt, comes in 30W to 240W options and has optional motion and daylight sensors, with IP65 and IK10 ratings.</p></div></details>
-   <details><summary>What lighting solutions are available for car parks?</summary><div class="ans"><p>Car parks need durable fittings that can run 24/7. Chamaeleon has integrated motion and daylight sensors with emergency and non-emergency options, and Vico offers 600mm, 1200mm and 1500mm battens with motion sensing. Both are IP65 and IK10 rated.</p></div></details>
-   <details><summary>Are enLighten products suitable for industrial buildings?</summary><div class="ans"><p>Yes. Our range includes IP65 waterproof and IK10 impact-resistant fittings for demanding environments such as warehouses, tunnels, construction sites and industrial facilities.</p></div></details>
-   <details><summary>Do commercial LED lights need regular maintenance?</summary><div class="ans"><p>LEDs need far fewer replacements than older lamps, which reduces maintenance costs. Fittings should still be kept clean, and emergency lighting must be tested regularly under AS/NZS 2293.</p></div></details>
-   <details><summary>What Australian Standards apply to commercial lighting?</summary><div class="ans"><p>The AS/NZS 1680 series covers interior lighting levels, AS/NZS 1158 covers lighting for roads and outdoor public areas including some car parks, and AS/NZS 2293 covers emergency lighting. The National Construction Code (Section J) also sets energy efficiency requirements for artificial lighting. Our team can help you choose compliant fittings.</p></div></details>
-   <details><summary>Are government rebates available for LED lighting upgrades?</summary><div class="ans"><p>It depends on your state and site. In NSW, the Energy Savings Scheme's commercial lighting method ended for implementations after 31 March 2026, although some smaller businesses may still be eligible through other methods. Victoria's Victorian Energy Upgrades program continues to support commercial lighting. See our <a href="https://www.enlighten.com.au/knowledge-centre/rebates-grants-and-incentives">rebates, grants and incentives guide</a> or ask our team.</p></div></details>
-   <details><summary>Can existing commercial lights be replaced with LEDs?</summary><div class="ans"><p>Yes. Most fluorescent, metal halide and halogen fittings can be replaced with LED equivalents. We recommend replacement fittings that suit your existing layout and mounting, and your electrician installs them.</p></div></details>
-   <details><summary>How long do commercial LED lights last?</summary><div class="ans"><p>Quality LED fittings last many years longer than traditional lamps. Rated life varies by product, so check each datasheet. All enLighten products come with a minimum 5-year warranty.</p></div></details>
-   <details><summary>Does enLighten provide technical support?</summary><div class="ans"><p>Yes. Our team provides ongoing support and guidance, and we offer free technical resources including spacing guides, pole mount guides and IES files.</p></div></details>
-   <details><summary>What information do I need for an ROI proposal?</summary><div class="ans"><p>To start, just your name, mobile, state and email. After that, the site address, the number and type of existing fittings, operating hours and your electricity rate help us prepare a more accurate proposal.</p></div></details>
-   <details><summary>How do I request a commercial lighting ROI proposal?</summary><div class="ans"><p>Complete the short form at the top of this page or call 1800 365 444. A commercial lighting specialist will be in touch to discuss your site.</p></div></details>
+  <div class="faq-col">
+  <div class="faq-tools">
+   <label class="faq-search"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="sr">Search FAQs</span><input id="faq-q" type="search" placeholder="Search questions, e.g. sensors, payback, rebates" autocomplete="off"></label>
+   <div class="faq-pills" role="group" aria-label="Filter FAQs by topic">
+    <button type="button" class="pill" data-f="all" aria-pressed="true">All</button>
+    <button type="button" class="pill" data-f="basics" aria-pressed="false">Basics</button>
+    <button type="button" class="pill" data-f="costs" aria-pressed="false">Costs &amp; savings</button>
+    <button type="button" class="pill" data-f="sensors" aria-pressed="false">Sensors &amp; controls</button>
+    <button type="button" class="pill" data-f="apps" aria-pressed="false">Applications</button>
+    <button type="button" class="pill" data-f="standards" aria-pressed="false">Standards &amp; rebates</button>
+    <button type="button" class="pill" data-f="support" aria-pressed="false">Support</button>
+   </div>
+   <p class="faq-count" id="faq-count" aria-live="polite"></p>
+  </div>
+  <div class="faq" id="faq-list">
+   <details data-cat="basics" open><summary>What is commercial LED lighting?</summary><div class="ans"><p>Commercial LED lighting is energy-efficient lighting designed for business and public buildings such as offices, warehouses, car parks, retail and strata common areas. Compared with older fluorescent, metal halide or halogen fittings, LEDs use less power, last longer and can be paired with sensors and smart controls.</p></div></details>
+   <details data-cat="costs"><summary>How much energy can commercial LED lighting save?</summary><div class="ans"><p>Savings depend on your existing fittings, operating hours and whether sensors are added. enLighten's LED solutions regularly deliver energy savings of up to 93%, with the biggest savings in spaces that are lit around the clock, such as car parks and stairwells.</p></div></details>
+   <details data-cat="costs"><summary>How much does it cost to upgrade commercial lighting?</summary><div class="ans"><p>Cost depends on the number and type of fittings, mounting heights, the controls you need and your site's access requirements. Your ROI proposal sets out recommended products and pricing for your site, alongside the expected savings.</p></div></details>
+   <details data-cat="costs"><summary>What is the return on investment for LED lighting?</summary><div class="ans"><p>The return comes from lower energy use, reduced standby consumption with sensors, and fewer replacements and maintenance call-outs. Because lighting accounts for around 20% of a commercial building's energy use, these savings add up quickly.</p></div></details>
+   <details data-cat="costs"><summary>How long does it take to recover the cost of an LED upgrade?</summary><div class="ans"><p>Our LED lighting solutions typically pay for themselves in 1 to 2 years. Sites with long operating hours usually see the fastest payback. Your ROI proposal estimates the payback period for your building.</p></div></details>
+   <details data-cat="sensors"><summary>What are the benefits of smart commercial lighting?</summary><div class="ans"><p>Smart lighting adds motion sensors, daylight detection and dimming controls to efficient LED fittings. Lights run only at the level each space needs, which reduces energy use and wear while keeping areas safe and well lit.</p></div></details>
+   <details data-cat="sensors"><summary>Can motion sensors reduce commercial lighting costs?</summary><div class="ans"><p>Yes. Motion sensors dim lights to a low standby level when an area is empty and bring them back to full brightness when someone arrives. For example, Vico runs at 20% standby brightness, and Chamaeleon has standby power as low as 3W.</p></div></details>
+   <details data-cat="sensors"><summary>How does daylight detection work?</summary><div class="ans"><p>A daylight sensor measures natural light. When there is enough daylight, it holds the fitting off or dimmed, and it switches the light back on as daylight fades. It is ideal for perimeter car parks, warehouses with skylights and outdoor areas.</p></div></details>
+   <details data-cat="apps"><summary>What lighting is best for commercial offices?</summary><div class="ans"><p>Offices need even, glare-controlled light at the levels recommended for each task under AS/NZS 1680. Efficient LED fittings combined with occupancy and daylight controls give comfortable light while cutting energy use. We can recommend fittings for your floor plate.</p></div></details>
+   <details data-cat="apps"><summary>What LED lighting is suitable for warehouses?</summary><div class="ans"><p>Warehouses usually need high bay fittings matched to the mounting height. Tauro Black delivers up to 165 lumens per watt, comes in 30W to 240W options and has optional motion and daylight sensors, with IP65 and IK10 ratings.</p></div></details>
+   <details data-cat="apps"><summary>What lighting solutions are available for car parks?</summary><div class="ans"><p>Car parks need durable fittings that can run 24/7. Chamaeleon has integrated motion and daylight sensors with emergency and non-emergency options, and Vico offers 600mm, 1200mm and 1500mm battens with motion sensing. Both are IP65 and IK10 rated.</p></div></details>
+   <details data-cat="apps"><summary>Are enLighten products suitable for industrial buildings?</summary><div class="ans"><p>Yes. Our range includes IP65 waterproof and IK10 impact-resistant fittings for demanding environments such as warehouses, tunnels, construction sites and industrial facilities.</p></div></details>
+   <details data-cat="basics"><summary>Do commercial LED lights need regular maintenance?</summary><div class="ans"><p>LEDs need far fewer replacements than older lamps, which reduces maintenance costs. Fittings should still be kept clean, and emergency lighting must be tested regularly under AS/NZS 2293.</p></div></details>
+   <details data-cat="standards"><summary>What Australian Standards apply to commercial lighting?</summary><div class="ans"><p>The AS/NZS 1680 series covers interior lighting levels, AS/NZS 1158 covers lighting for roads and outdoor public areas including some car parks, and AS/NZS 2293 covers emergency lighting. The National Construction Code (Section J) also sets energy efficiency requirements for artificial lighting. Our team can help you choose compliant fittings.</p></div></details>
+   <details data-cat="standards"><summary>Are government rebates available for LED lighting upgrades?</summary><div class="ans"><p>It depends on your state and site. In NSW, the Energy Savings Scheme's commercial lighting method ended for implementations after 31 March 2026, although some smaller businesses may still be eligible through other methods. Victoria's Victorian Energy Upgrades program continues to support commercial lighting. See our <a href="https://www.enlighten.com.au/knowledge-centre/rebates-grants-and-incentives">rebates, grants and incentives guide</a> or ask our team.</p></div></details>
+   <details data-cat="basics"><summary>Can existing commercial lights be replaced with LEDs?</summary><div class="ans"><p>Yes. Most fluorescent, metal halide and halogen fittings can be replaced with LED equivalents. We recommend replacement fittings that suit your existing layout and mounting, and your electrician installs them.</p></div></details>
+   <details data-cat="basics"><summary>How long do commercial LED lights last?</summary><div class="ans"><p>Quality LED fittings last many years longer than traditional lamps. Rated life varies by product, so check each datasheet. All enLighten products come with a minimum 5-year warranty.</p></div></details>
+   <details data-cat="support"><summary>Does enLighten provide technical support?</summary><div class="ans"><p>Yes. Our team provides ongoing support and guidance, and we offer free technical resources including spacing guides, pole mount guides and IES files.</p></div></details>
+   <details data-cat="support"><summary>What information do I need for an ROI proposal?</summary><div class="ans"><p>To start, just your name, mobile, state and email. After that, the site address, the number and type of existing fittings, operating hours and your electricity rate help us prepare a more accurate proposal.</p></div></details>
+   <details data-cat="support"><summary>How do I request a commercial lighting ROI proposal?</summary><div class="ans"><p>Complete the short form at the top of this page or call 1800 365 444. A commercial lighting specialist will be in touch to discuss your site.</p></div></details>
+   <p class="faq-empty" id="faq-empty" hidden>No questions match your search. Try another word, or call <a href="tel:1800365444">1800 365 444</a> and ask us directly.</p>
+  </div>
   </div>
  </div>
 </section>
@@ -821,6 +851,13 @@ textarea.inp{height:auto;min-height:72px;padding:12px 14px;line-height:1.5;resiz
   function go(dir){var c=t.firstElementChild;if(!c)return;var step=c.getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||24),max=t.scrollWidth-t.clientWidth-2;
     if(dir>0&&t.scrollLeft>=max)t.scrollTo({left:0});else if(dir<0&&t.scrollLeft<=2)t.scrollTo({left:max+2});else t.scrollBy({left:dir*step});}
   document.getElementById('tprev').addEventListener('click',function(){go(-1);});
+  var fq=document.getElementById('faq-q'),fl=document.getElementById('faq-list'),fc=document.getElementById('faq-count'),fe=document.getElementById('faq-empty'),fp=document.querySelectorAll('.faq-pills .pill'),fcat='all';
+  var fitems=[].slice.call(fl.querySelectorAll('details'));
+  function ffilter(){var q=fq.value.trim().toLowerCase(),n=0;
+    fitems.forEach(function(d){var ok=(fcat==='all'||d.dataset.cat===fcat)&&(!q||d.textContent.toLowerCase().indexOf(q)>-1);d.hidden=!ok;if(ok)n++;});
+    fe.hidden=n>0;fc.textContent=(q||fcat!=='all')?(n+' of '+fitems.length+' questions'):'';}
+  fq.addEventListener('input',ffilter);
+  [].forEach.call(fp,function(b){b.addEventListener('click',function(){fcat=b.dataset.f;[].forEach.call(fp,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});ffilter();});});
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
