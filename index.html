@@ -387,6 +387,48 @@ html{scroll-behavior:smooth}
 .fx .lp>section,.fx .lp>footer{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .fx .lp>section.seen,.fx .lp>footer.seen{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.totop,.totop-ring .val{transition:opacity .2s}.totop.on .totop-arrow,.totop:hover .totop-arrow{animation:none}.fx .lp>section,.fx .lp>footer{opacity:1;transform:none;transition:none}}
+/* case study modal */
+.cs-modal{border:0;padding:0;margin:auto;width:min(880px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 48px);border-radius:22px;background:#ffffff;color:#333333;overflow:hidden;font-family:Montserrat,Helvetica,Arial,sans-serif;box-shadow:0 40px 100px -20px rgba(0,0,0,.55)}
+.cs-modal::backdrop{background:rgba(12,13,14,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.cs-modal[open]{display:flex;animation:csIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes csIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+html:has(.cs-modal[open]){overflow:hidden}
+.cs-panel{position:relative;overflow-y:auto;overscroll-behavior:contain;width:100%;max-height:calc(100dvh - 48px)}
+.cs-top{position:sticky;top:0;z-index:3;height:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 16px}
+.cs-kicker{margin-top:16px;padding:6px 12px;border-radius:999px;background:rgba(0,0,0,.6);color:#ffffff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.cs-close{margin-top:12px;width:44px;height:44px;flex:none;border-radius:50%;border:0;background:#ffffff;color:#231F20;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s,background .15s}
+.cs-close:hover{background:var(--g);transform:rotate(90deg)}
+.cs-close:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+.cs-hero{position:relative;height:320px;background:#1C1D1F}
+.cs-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,15,.88) 0%,rgba(15,15,15,.25) 55%,rgba(15,15,15,0) 75%)}
+.cs-hero-txt{position:absolute;left:36px;right:36px;bottom:28px;z-index:1;color:#ffffff}
+.cs-hero-txt p{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g)}
+.cs-hero-txt h2{margin:0;font-size:32px;line-height:1.15;font-weight:800;color:#ffffff}
+.cs-body{padding:28px 36px 36px;font-size:16px;line-height:1.7}
+.cs-body h3{margin:32px 0 10px;font-size:20px;color:#231F20}
+.cs-body p{margin:0 0 14px}
+.cs-stats{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cs-stats li{background:#F3F6EC;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.cs-stats b{font-size:26px;line-height:1.1;color:#231F20;font-weight:800}
+.cs-stats span{font-size:13px;line-height:1.35;color:#555555}
+.cs-lead{font-size:18px;color:#231F20;font-weight:500}
+.cs-body figure{margin:20px 0}
+.cs-body figure img{width:100%;display:block;border-radius:12px;background:#ECEEE8}
+.cs-body figcaption{margin-top:8px;font-size:13px;color:#666666;display:flex;align-items:center;gap:8px}
+.cs-ba,.cs-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.cs-ba figure,.cs-pair figure{margin:0}
+.cs-ba img,.cs-pair img{aspect-ratio:4/3;object-fit:cover}
+.cs-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:#231F20;color:#ffffff}
+.cs-tag-g{background:var(--g);color:#1B1B1B}
+.cs-chart img{border:1px solid #E3E5DF;background:#ffffff}
+.cs-wide img{aspect-ratio:16/9;object-fit:cover}
+.cs-quote{margin:28px 0;padding:20px 24px;border-left:4px solid var(--g);background:#F7F8F5;border-radius:0 12px 12px 0;font-size:17px;font-style:italic;color:#231F20}
+.cs-cta{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#1C1D1F;color:#ffffff;border-radius:16px;padding:22px 24px}
+.cs-cta b{display:block;font-size:18px}
+.cs-cta span{font-size:14px;color:#D2D2D2}
+@media (max-width:700px){.cs-modal{width:100%;max-height:100dvh;height:100dvh;border-radius:0}.cs-panel{max-height:100dvh}.cs-hero{height:240px}.cs-hero-txt{left:20px;right:20px;bottom:20px}.cs-hero-txt h2{font-size:24px}.cs-body{padding:22px 20px 28px}.cs-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-stats b{font-size:22px}.cs-ba,.cs-pair{grid-template-columns:minmax(0,1fr)}.cs-cta .btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.cs-modal[open]{animation:none}.cs-close:hover{transform:none}}
 </style>
 <script>if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx');</script>
 </head>
@@ -749,7 +791,7 @@ html{scroll-behavior:smooth}
    <img src="assets/iso-certifications.png" alt="Global-Mark certified: ISO 9001 Quality Management, ISO 14001 Environmental Management, ISO 45001 OHS Management System" width="769" height="202" loading="lazy">
    <img src="assets/lighting-council-australia.png" alt="Lighting Council Australia accredited" width="700" height="286" loading="lazy">
   </div>
-  <div class="case"><p>Case study<small>Sydney CBD A-grade commercial office tower</small></p><a class="btn btn-ghost" href="https://www.enlighten.com.au/case-study/sydney-cbd-a-grade-commercial-office-tower">Read the case study</a></div>
+  <div class="case"><p>Case study<small>Sydney CBD A-grade commercial office tower</small></p><button class="btn btn-ghost" type="button" id="cs-open" aria-haspopup="dialog" aria-controls="cs-modal">Read the case study</button></div>
  </div>
 </section>
 
@@ -928,6 +970,68 @@ html{scroll-behavior:smooth}
   <p class="bas-modal-hint">Drag the handle, or use the arrow keys, to compare before and after.</p>
  </div>
 </dialog>
+<dialog class="cs-modal" id="cs-modal" aria-labelledby="cs-title" style="--g: #97C93B">
+ <article class="cs-panel">
+  <header class="cs-top">
+   <span class="cs-kicker">Case study</span>
+   <button class="cs-close" type="button" id="cs-close"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg><span class="sr">Close case study</span></button>
+  </header>
+  <div class="cs-hero">
+   <img src="assets/gallery-tower.webp" alt="477 Pitt Street, a 34-storey A-grade office tower opposite Sydney's Central Station">
+   <div class="cs-hero-txt">
+    <p>Fire stair &amp; car park retrofit</p>
+    <h2 id="cs-title">Sydney CBD A-grade commercial office tower</h2>
+   </div>
+  </div>
+  <div class="cs-body">
+   <ul class="cs-stats">
+    <li><b>85%</b><span>energy saving</span></li>
+    <li><b>299,867</b><span>kWh saved per year</span></li>
+    <li><b>1.5 yrs</b><span>project ROI, incl. ESCs</span></li>
+    <li><b>401</b><span>Chamaeleon lights replaced 802 T8 tubes</span></li>
+   </ul>
+   <p class="cs-lead">Listed property fund ISPT achieves 1.5 year project ROI &amp; 1/4 star NABERS rating improvement through Chamaeleon LED retrofit of Sydney CBD commercial tower fire stairs &amp; car park.</p>
+
+   <h3>Project overview</h3>
+   <p>477 Pitt St is a 34 storey A-grade commercial office tower opposite Sydney's Central Railway Station with an adjacent 10 storey wing above two levels of retail including post office, food court, medical centre and newsagency.</p>
+   <p>Property managers Knight Frank worked closely with enLighten Australia to scope the LED lighting upgrade for the fire stairs in both the commercial office tower and wing and 300 space underground 2 level car park. The existing lighting in these areas was twin T8 36W fluorescent fixtures operating 24 hours per day.</p>
+
+   <div class="cs-ba">
+    <figure><img src="assets/cs/carpark-before.webp" alt="Underground car park with the existing twin T8 fluorescent fittings" loading="lazy"><figcaption><span class="cs-tag">Before</span> Existing twin T8 fluorescent fittings</figcaption></figure>
+    <figure><img src="assets/gallery-carpark.webp" alt="The same car park after the Chamaeleon LED retrofit" loading="lazy"><figcaption><span class="cs-tag cs-tag-g">After</span> Chamaeleon LED in the car park</figcaption></figure>
+   </div>
+
+   <h3>The solution</h3>
+   <p>8 and 10 chip Chamaeleon emergency lights were installed in fire stairs and car park egress paths and standard Chamaeleon lights were installed in the car park bays.</p>
+   <p>401 Chamaeleon lights replaced 802 T8 fluorescent tubes, producing the same light output levels.</p>
+
+   <div class="cs-pair">
+    <figure><img src="assets/gallery-foyer.webp" alt="Chamaeleon LED lights in a lift foyer at 477 Pitt St" loading="lazy"><figcaption>Chamaeleon in a lift foyer</figcaption></figure>
+    <figure><img src="assets/cs/wall-mount.webp" alt="Wall-mounted Chamaeleon LED light at 477 Pitt St" loading="lazy"><figcaption>Wall-mounted Chamaeleon</figcaption></figure>
+   </div>
+
+   <h3>Electricity savings results</h3>
+   <p>Fire stair meter data supplied by Knight Frank indicated an average 85% reduction in lighting electricity usage. Monthly electricity usage across the two tower fire stairs dropped from a pre installation average of over 8,400 kWh to a post installation average of 1,250 kWh.</p>
+   <figure class="cs-chart"><img src="assets/cs/energy-data.webp" alt="Bar chart of daily stair lighting consumption for January 2012, dropping sharply after the LED installation" loading="lazy"><figcaption>Figure 1: M30 Tower Stair lighting meter report, January 2012</figcaption></figure>
+   <p>Indicative car park meter data provided by the metering system also revealed a significant reduction in energy usage.</p>
+
+   <h3>Project ROI</h3>
+   <p>Calculation of the LED retrofit project ROI of 1.5 years is inclusive of electricity, maintenance savings and Energy Savings Certificates. The property owners applied for Energy Savings Certificates (ESCs) generated from the commercial lighting upgrade project under the NSW Energy Savings Scheme. The project's Accredited Certificate Provider has indicated that 1430 certificates will be generated from the project.</p>
+
+   <blockquote class="cs-quote">The property owners are committed to owning an environmentally sustainable portfolio and operating the portfolio in a way which minimises resource use and mitigates the potential effects of climate change.</blockquote>
+
+   <h3>About ISPT</h3>
+   <p>ISPT is one of Australia's largest unlisted property funds with over $7 billion of funds under management. Sustainability initiatives implemented across the commercial property portfolio since 2006 have resulted in $10.5 million savings to ISPT Core Fund investors through electricity, gas and water savings.</p>
+
+   <figure class="cs-wide"><img src="assets/gallery-office-foyer.webp" alt="Atrium foyer of 477 Pitt Street, Sydney" loading="lazy"><figcaption>477 Pitt St atrium foyer</figcaption></figure>
+
+   <div class="cs-cta">
+    <div><b>See what your building could save</b><span>Get a free ROI proposal for your site.</span></div>
+    <a class="btn" href="#roi-form" id="cs-cta">Get My ROI Proposal</a>
+   </div>
+  </div>
+ </article>
+</dialog>
 <button class="totop" id="totop" type="button" aria-label="Back to top" tabindex="-1">
  <svg class="totop-ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" class="trk"></circle><circle cx="26" cy="26" r="23" class="val" id="totop-val"></circle></svg>
  <svg class="totop-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"></path></svg>
@@ -1011,6 +1115,12 @@ html{scroll-behavior:smooth}
   tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});var h1=document.getElementById('hero-h1');if(h1){h1.tabIndex=-1;h1.focus({preventScroll:true});}});
   if(document.documentElement.classList.contains('fx')){var fxo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');fxo.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
     [].forEach.call(document.querySelectorAll('.lp>section,.lp>footer'),function(s){fxo.observe(s);});}
+  var csm=document.getElementById('cs-modal'),cso=document.getElementById('cs-open');
+  cso.addEventListener('click',function(){csm.showModal();csm.querySelector('.cs-panel').scrollTop=0;document.getElementById('cs-close').focus();});
+  document.getElementById('cs-close').addEventListener('click',function(){csm.close();});
+  csm.addEventListener('click',function(e){if(e.target===csm)csm.close();});
+  csm.addEventListener('close',function(){cso.focus({preventScroll:true});});
+  document.getElementById('cs-cta').addEventListener('click',function(e){e.preventDefault();csm.close();document.getElementById('roi-form').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){var n=document.getElementById('f-name');if(n)n.focus({preventScroll:true});},500);});
   document.getElementById('tnext').addEventListener('click',function(){go(1);});
 })();
 </script>
